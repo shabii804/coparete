@@ -62,6 +62,26 @@
   --animate-pulse-ring: pulse-ring 2.5s ease-out infinite;
   --animate-orbit: orbit 16s linear infinite;
   --animate-blob: blob 18s ease-in-out infinite;
+  --animate-float-card: float-card 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 4s ease-in-out infinite;
+  --animate-particle: particle 12s linear infinite;
+}
+
+@keyframes float-card {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
 }
 
 :root {
@@ -529,3 +549,200 @@
   transition: opacity 0.4s ease;
 }
 .glow-ring:hover::before { opacity: 0.7; }
+
+/* ===== Premium hero utilities ===== */
+
+/* Premium button — primary */
+.btn-premium-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.625rem; /* 58px */
+  padding: 0 1.875rem; /* 30px */
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 17px;
+  color: #FFFFFF;
+  background: #2563EB;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.btn-premium-primary:hover {
+  background: #1D4ED8;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.35);
+}
+
+/* Premium button — secondary (glass) */
+.btn-premium-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.625rem;
+  padding: 0 1.875rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 17px;
+  color: #0F172A;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.btn-premium-secondary:hover {
+  background: #FFFFFF;
+  border-color: #2563EB;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+/* Premium stat card — glass */
+.stat-card-premium {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.stat-card-premium:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 56px rgba(37, 99, 235, 0.12);
+}
+
+/* Premium icon circle */
+.icon-circle-premium {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(16, 185, 129, 0.12));
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Premium hero heading */
+.hero-heading-premium {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #0F172A;
+}
+
+/* Premium hero paragraph */
+.hero-paragraph-premium {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #64748B;
+  max-width: 650px;
+}
+
+/* Grid background — thin and subtle */
+.bg-grid-premium {
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+}
+
+/* Animated underline link */
+.nav-link-premium {
+  position: relative;
+  padding: 0.5rem 0.875rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  transition: color 0.25s ease;
+}
+.nav-link-premium::after {
+  content: '';
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: 0.25rem;
+  height: 1.5px;
+  background: linear-gradient(90deg, #2563EB, #10B981);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 1px;
+}
+.nav-link-premium:hover { color: #0F172A; }
+.nav-link-premium:hover::after { transform: scaleX(1); }
+
+.nav-link-premium-active {
+  color: #0F172A !important;
+}
+.nav-link-premium-active::after { transform: scaleX(1) !important; }
+
+/* Floating particle */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.6), transparent 70%);
+  pointer-events: none;
+  animation: particle 12s linear infinite;
+}
+
+/* Premium navbar container */
+.navbar-premium {
+  height: 72px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.navbar-premium.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.10);
+}
+
+/* Hero right floating card */
+.float-card-premium {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+/* Trust badge */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F172A;
+  transition: all 0.3s ease;
+}
+.trust-badge:hover {
+  background: #FFFFFF;
+  border-color: #2563EB;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+}

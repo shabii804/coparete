@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -9,7 +9,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const manrope = Manrope({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
@@ -100,7 +100,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jakarta.variable} antialiased bg-background text-foreground`}
+        className={`${inter.variable} ${manrope.variable} antialiased bg-background text-foreground`}
       >
         {children}
         <Toaster />
