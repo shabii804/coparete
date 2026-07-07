@@ -56,8 +56,8 @@ export default function ProductsPage() {
         subtitle="A suite of enterprise-grade products built and battle-tested across our divisions — ready to deploy in your business today."
       />
 
-      <section className="relative py-16 md:py-24 bg-white overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8 space-y-16 md:space-y-24">
+      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+        <div className="container-premium space-y-16 md:space-y-24">
           {PRODUCTS.map((p, idx) => (
             <Reveal key={p.name} y={40}>
               <div id={`product-${idx}`} className="rounded-3xl bg-[#F8FAFC] border border-[#E2E8F0] overflow-hidden shadow-premium">

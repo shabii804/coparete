@@ -24,7 +24,7 @@ export default function Process() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#F8FAFC] overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
       {/* Light decorative */}
       <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
@@ -32,7 +32,7 @@ export default function Process() {
       <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="container-premium relative">
         <SectionHeading
           eyebrow="Development Process"
           eyebrowColor="emerald"

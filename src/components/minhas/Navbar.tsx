@@ -47,8 +47,8 @@ export default function Navbar({ visible }: { visible: boolean }) {
         )}
       >
         <nav className={cn(
-          'mx-auto max-w-7xl flex items-center justify-between px-4 md:px-8 transition-all duration-500',
-          scrolled ? 'py-2.5' : 'py-4'
+          'container-premium flex items-center justify-between transition-all duration-500',
+          scrolled ? 'py-2.5' : 'py-3.5'
         )}>
           {/* Logo */}
           <button

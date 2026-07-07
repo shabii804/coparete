@@ -56,10 +56,10 @@ export default function ServicesPage() {
       />
 
       {/* Services detail */}
-      <section className="relative py-16 md:py-24 bg-white overflow-hidden">
+      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[36rem] h-[36rem] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8 space-y-12 md:space-y-20">
+        <div className="container-premium space-y-12 md:space-y-20">
           {SERVICES.map((s, idx) => {
             const Icon = s.icon;
             const reversed = idx % 2 === 1;

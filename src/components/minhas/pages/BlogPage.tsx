@@ -106,7 +106,7 @@ export default function BlogPage() {
 
       {/* Article grid */}
       <section className="relative py-12 md:py-16 bg-[#F8FAFC] overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="container-premium">
           {rest.length > 0 && (
             <>
               <h3 className="text-lg font-bold text-[#0F172A] mb-6" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Latest articles</h3>

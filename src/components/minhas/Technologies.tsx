@@ -26,11 +26,11 @@ const TECHS = [
 export default function Technologies() {
   const items = [...TECHS, ...TECHS];
   return (
-    <section className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="container-premium relative">
         <SectionHeading
           eyebrow="Technologies We Use"
           eyebrowColor="emerald"
@@ -40,20 +40,20 @@ export default function Technologies() {
       </div>
 
       {/* Marquee row 1 */}
-      <div className="mt-12 md:mt-16 marquee-mask">
-        <div className="flex w-max animate-marquee gap-3 md:gap-4 px-4">
+      <div className="mt-8 md:mt-10 marquee-mask">
+        <div className="flex w-max animate-marquee gap-2.5 md:gap-3 px-4">
           {items.map((t, i) => {
             const Icon = t.icon;
             return (
               <div
                 key={`r1-${i}`}
-                className="group flex items-center gap-3 px-5 md:px-7 py-4 md:py-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:bg-white hover:shadow-premium transition-all duration-400 flex-shrink-0"
+                className="group flex items-center gap-2.5 px-4 md:px-5 py-2.5 md:py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:bg-white hover:shadow-premium transition-all duration-400 flex-shrink-0"
               >
-                <div className="w-10 h-10 rounded-xl inline-flex items-center justify-center"
+                <div className="w-8 h-8 rounded-lg inline-flex items-center justify-center"
                   style={{ background: `${t.color}15` }}>
-                  <Icon className="w-5 h-5" style={{ color: t.color }} />
+                  <Icon className="w-4 h-4" style={{ color: t.color }} />
                 </div>
-                <span className="text-base md:text-lg font-bold text-[#0F172A] whitespace-nowrap"
+                <span className="text-sm md:text-base font-bold text-[#0F172A] whitespace-nowrap"
                   style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   {t.name}
                 </span>
@@ -64,20 +64,20 @@ export default function Technologies() {
       </div>
 
       {/* Marquee row 2 — reverse direction */}
-      <div className="mt-3 md:mt-4 marquee-mask">
-        <div className="flex w-max animate-marquee-reverse gap-3 md:gap-4 px-4">
+      <div className="mt-2.5 md:mt-3 marquee-mask">
+        <div className="flex w-max animate-marquee-reverse gap-2.5 md:gap-3 px-4">
           {[...items].reverse().map((t, i) => {
             const Icon = t.icon;
             return (
               <div
                 key={`r2-${i}`}
-                className="group flex items-center gap-3 px-5 md:px-7 py-4 md:py-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#10B981]/40 hover:bg-white hover:shadow-premium transition-all duration-400 flex-shrink-0"
+                className="group flex items-center gap-2.5 px-4 md:px-5 py-2.5 md:py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#10B981]/40 hover:bg-white hover:shadow-premium transition-all duration-400 flex-shrink-0"
               >
-                <div className="w-10 h-10 rounded-xl inline-flex items-center justify-center"
+                <div className="w-8 h-8 rounded-lg inline-flex items-center justify-center"
                   style={{ background: `${t.color}15` }}>
-                  <Icon className="w-5 h-5" style={{ color: t.color }} />
+                  <Icon className="w-4 h-4" style={{ color: t.color }} />
                 </div>
-                <span className="text-base md:text-lg font-bold text-[#0F172A] whitespace-nowrap"
+                <span className="text-sm md:text-base font-bold text-[#0F172A] whitespace-nowrap"
                   style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   {t.name}
                 </span>
@@ -89,7 +89,7 @@ export default function Technologies() {
 
       {/* Bottom stat strip */}
       <Reveal delay={0.2}>
-        <div className="mx-auto max-w-7xl px-4 md:px-8 mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="container-premium mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { icon: Shield, label: 'SOC 2 Certified', value: '100%' },
             { icon: Gauge, label: 'Avg. Lighthouse Score', value: '94' },
@@ -100,17 +100,17 @@ export default function Technologies() {
             return (
               <motion.div
                 key={s.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="p-5 rounded-2xl bg-gradient-to-br from-[#F8FAFC] to-white border border-[#E2E8F0] text-center"
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className="p-4 rounded-xl bg-gradient-to-br from-[#F8FAFC] to-white border border-[#E2E8F0] text-center"
               >
-                <Icon className="w-5 h-5 mx-auto text-[#2563EB] mb-2" />
-                <div className="text-2xl font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                <Icon className="w-4 h-4 mx-auto text-[#2563EB] mb-1.5" />
+                <div className="text-lg font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   {s.value}
                 </div>
-                <div className="text-[11px] text-[#64748B] uppercase tracking-wider mt-1">{s.label}</div>
+                <div className="text-[10px] text-[#64748B] uppercase tracking-wider mt-0.5">{s.label}</div>
               </motion.div>
             );
           })}

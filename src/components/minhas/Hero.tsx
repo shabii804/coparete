@@ -115,7 +115,7 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* Content with parallax */}
       <motion.div
-        className="relative z-10 mx-auto max-w-7xl px-4 md:px-8 min-h-[100svh] flex flex-col justify-center pt-28 pb-20"
+        className="relative z-10 container-premium min-h-[100svh] flex flex-col justify-center pt-28 pb-16"
         style={{ y: contentY }}
       >
         <div className="max-w-4xl">
@@ -134,7 +134,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             </span>
           </motion.div>
 
-          <h1 className="text-fluid-5xl font-extrabold leading-[1.02] text-[#0F172A] tracking-tight">
+          <h1 className="text-fluid-4xl md:text-fluid-5xl font-extrabold leading-[1.05] text-[#0F172A] tracking-tight">
             {HERO_HEADLINE_LINES.map((line, i) => (
               <span key={i} className="block overflow-hidden pb-1">
                 <motion.span
@@ -189,7 +189,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             initial="hidden"
             animate={visible ? 'show' : 'hidden'}
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 1.4 } } }}
-            className="mt-12 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl"
+            className="mt-10 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 max-w-3xl"
           >
             {STATS.map((s) => {
               const Icon = s.icon;
@@ -201,12 +201,12 @@ export default function Hero({ visible }: { visible: boolean }) {
                     show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
                   }}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  className="group relative p-4 md:p-5 rounded-2xl glass-strong border border-white/70 shadow-premium hover:shadow-glow-blue transition-shadow duration-500"
+                  className="group relative p-3 md:p-4 rounded-xl glass-strong border border-white/70 shadow-premium hover:shadow-glow-blue transition-shadow duration-500 overflow-hidden"
                 >
-                  <div className="icon-modern w-9 h-9 mb-3">
+                  <div className="icon-modern w-8 h-8 mb-2.5">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                  <div className="text-xl md:text-2xl font-bold text-[#0F172A] break-words" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Counter value={s.value} suffix={s.suffix} />
                   </div>
                   <div className="mt-1 text-[11px] md:text-xs font-medium text-[#64748B] tracking-wide">

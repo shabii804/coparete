@@ -34,8 +34,8 @@ export default function PortfolioPage() {
         subtitle="A selection of recent projects across our divisions — each one a testament to craft, scale, and long-term thinking."
       />
 
-      <section className="relative py-16 md:py-24 bg-white overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+        <div className="container-premium">
           {/* Filters */}
           <Reveal>
             <div className="flex flex-wrap gap-2 mb-10">

@@ -45,11 +45,11 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative py-20 md:py-32 bg-[#F8FAFC] overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
       <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #F59E0B, transparent 70%)' }} />
 
-      <div className="relative mx-auto max-w-4xl px-4 md:px-8">
+      <div className="container-premium relative max-w-3xl">
         <SectionHeading
           eyebrow="FAQ"
           eyebrowColor="gold"
@@ -57,7 +57,7 @@ export default function FAQ() {
           description="Can't find what you're looking for? Reach out — our team is happy to help."
         />
 
-        <div className="mt-10 md:mt-14 space-y-3">
+        <div className="mt-8 md:mt-10 space-y-2.5">
           {FAQS.map((faq, i) => {
             const open = openIndex === i;
             return (
@@ -71,14 +71,14 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => setOpenIndex(open ? null : i)}
-                    className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left"
+                    className="w-full flex items-center justify-between gap-4 p-4 md:p-5 text-left"
                     aria-expanded={open}
                   >
-                    <div className="flex items-center gap-3 md:gap-4">
-                      <div className={`w-8 h-8 rounded-lg inline-flex items-center justify-center flex-shrink-0 transition-colors ${
+                    <div className="flex items-center gap-3">
+                      <div className={`w-7 h-7 rounded-lg inline-flex items-center justify-center flex-shrink-0 transition-colors ${
                         open ? 'bg-gradient-to-br from-[#2563EB] to-[#10B981]' : 'bg-[#F8FAFC] border border-[#E2E8F0]'
                       }`}>
-                        <MessageCircleQuestion className={`w-4 h-4 ${open ? 'text-white' : 'text-[#2563EB]'}`} />
+                        <MessageCircleQuestion className={`w-3.5 h-3.5 ${open ? 'text-white' : 'text-[#2563EB]'}`} />
                       </div>
                       <span className="text-sm md:text-base font-semibold text-[#0F172A]"
                         style={{ fontFamily: 'var(--font-display), sans-serif' }}>
@@ -88,11 +88,11 @@ export default function FAQ() {
                     <motion.div
                       animate={{ rotate: open ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className={`w-8 h-8 rounded-lg inline-flex items-center justify-center flex-shrink-0 transition-colors ${
+                      className={`w-7 h-7 rounded-lg inline-flex items-center justify-center flex-shrink-0 transition-colors ${
                         open ? 'bg-[#2563EB]/10 text-[#2563EB]' : 'bg-[#F8FAFC] text-[#475569]'
                       }`}
                     >
-                      <Plus className="w-4 h-4" />
+                      <Plus className="w-3.5 h-3.5" />
                     </motion.div>
                   </button>
                   <AnimatePresence initial={false}>
@@ -103,8 +103,8 @@ export default function FAQ() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="px-5 md:px-6 pb-5 md:pb-6 pl-16 md:pl-[4.5rem]">
-                          <p className="text-sm md:text-base text-[#475569] leading-relaxed">{faq.a}</p>
+                        <div className="px-4 md:px-5 pb-4 md:pb-5 pl-14 md:pl-[3.5rem]">
+                          <p className="text-xs md:text-sm text-[#475569] leading-relaxed">{faq.a}</p>
                         </div>
                       </motion.div>
                     )}

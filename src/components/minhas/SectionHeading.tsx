@@ -28,21 +28,21 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   const dotColor = eyebrowColor === 'emerald' ? '#10B981' : eyebrowColor === 'gold' ? '#F59E0B' : '#2563EB';
   return (
-    <div className={`${align === 'center' ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl'} ${className}`}>
+    <div className={`${align === 'center' ? 'text-center max-w-2xl mx-auto' : 'max-w-xl'} ${className}`}>
       <Reveal>
-        <span className={`inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase ${EYEBROW_STYLES[eyebrowColor]}`}>
+        <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase ${EYEBROW_STYLES[eyebrowColor]}`}>
           <span className="w-1 h-1 rounded-full" style={{ background: dotColor }} />
           {eyebrow}
         </span>
       </Reveal>
-      <Reveal delay={0.1}>
-        <h2 className="mt-4 md:mt-5 text-fluid-3xl md:text-fluid-4xl font-bold leading-[1.08] text-[#0F172A]">
+      <Reveal delay={0.08}>
+        <h2 className="mt-3 text-fluid-2xl md:text-fluid-3xl font-bold leading-[1.12] text-[#0F172A]">
           {title}
         </h2>
       </Reveal>
       {description && (
-        <Reveal delay={0.2}>
-          <p className={`mt-4 md:mt-5 text-fluid-base md:text-fluid-lg text-[#475569] leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
+        <Reveal delay={0.15}>
+          <p className={`mt-3 text-fluid-sm md:text-fluid-base text-[#475569] leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
             {description}
           </p>
         </Reveal>
