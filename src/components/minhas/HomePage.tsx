@@ -5,6 +5,7 @@ import Hero from './Hero';
 import TechStack from './TechStack';
 import Industries from './Industries';
 import DevModels from './DevModels';
+import MissionVision from './MissionVision';
 import ContactSection from './ContactSection';
 import { Reveal, StaggerGroup, StaggerItem } from './Reveal';
 import SectionHeading from './SectionHeading';
@@ -137,6 +138,9 @@ export default function HomePage({ visible }: { visible: boolean }) {
           </div>
         </div>
       </section>
+
+      {/* 2.5. Mission / Vision / Values */}
+      <MissionVision />
 
       {/* 3. Services */}
       <section id="services" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
