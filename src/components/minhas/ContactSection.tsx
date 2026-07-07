@@ -27,9 +27,9 @@ function MagneticButton({ children, className }: { children: React.ReactNode; cl
 }
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'hello@minhas-enterprises.com' },
-  { icon: Phone, label: 'Phone', value: '+92 42 111 222 333' },
-  { icon: MapPin, label: 'Office', value: 'Gulberg III, Lahore, Pakistan' },
+  { icon: Mail, label: 'Email', value: 'hello@minhas-enterprises.com', gradient: 'linear-gradient(135deg, #2563EB, #3B82F6)', glow: 'rgba(37,99,235,0.35)' },
+  { icon: Phone, label: 'Phone', value: '+92 42 111 222 333', gradient: 'linear-gradient(135deg, #059669, #10B981)', glow: 'rgba(16,185,129,0.35)' },
+  { icon: MapPin, label: 'Office', value: 'Gulberg III, Lahore, Pakistan', gradient: 'linear-gradient(135deg, #D97706, #F59E0B)', glow: 'rgba(245,158,11,0.35)' },
 ];
 
 export default function ContactSection() {
@@ -54,8 +54,17 @@ export default function ContactSection() {
                 const Icon = c.icon;
                 return (
                   <StaggerItem key={c.label}>
-                    <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:bg-white hover:shadow-premium transition-all">
-                      <div className="icon-modern w-9 h-9 mb-2.5"><Icon className="w-4 h-4" /></div>
+                    <div className="group p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:bg-white hover:shadow-premium transition-all">
+                      <div
+                        className="relative w-9 h-9 rounded-lg inline-flex items-center justify-center mb-2.5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
+                        style={{ background: c.gradient, boxShadow: `0 6px 16px ${c.glow}` }}
+                      >
+                        <Icon className="w-4 h-4 text-white" strokeWidth={2} />
+                        <div className="absolute inset-0 rounded-lg overflow-hidden">
+                          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
+                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }} />
+                        </div>
+                      </div>
                       <div className="text-[10px] uppercase tracking-wider text-[#64748B] font-semibold mb-0.5">{c.label}</div>
                       <div className="text-xs text-[#0F172A] font-medium">{c.value}</div>
                     </div>

@@ -36,7 +36,7 @@ export default function Navbar({ visible }: { visible: boolean }) {
       initial={{ y: -100, opacity: 0 }}
       animate={visible ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 px-3 md:px-5 pt-2.5"
+      className="fixed top-0 left-0 right-0 z-[60] px-3 md:px-5 pt-2.5"
     >
       <nav
         className={cn(

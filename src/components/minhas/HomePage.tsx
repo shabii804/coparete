@@ -44,9 +44,18 @@ const SERVICES_PREVIEW = [
 ];
 
 const PILLARS = [
-  { icon: Target, title: 'Our Mission', text: 'Building software that empowers businesses to operate smarter.' },
-  { icon: Eye, title: 'Our Vision', text: 'To be the most trusted technology partner in the region.' },
-  { icon: Heart, title: 'Our Values', text: 'Innovation, integrity, and excellence in every line of code.' },
+  {
+    icon: Target, title: 'Our Mission', text: 'Building software that empowers businesses to operate smarter.',
+    gradient: 'linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%)', glow: 'rgba(37, 99, 235, 0.35)',
+  },
+  {
+    icon: Eye, title: 'Our Vision', text: 'To be the most trusted technology partner in the region.',
+    gradient: 'linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%)', glow: 'rgba(16, 185, 129, 0.35)',
+  },
+  {
+    icon: Heart, title: 'Our Values', text: 'Innovation, integrity, and excellence in every line of code.',
+    gradient: 'linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%)', glow: 'rgba(245, 158, 11, 0.35)',
+  },
 ];
 
 const PROJECTS_PREVIEW = [
@@ -63,12 +72,12 @@ const TEAM_PREVIEW = [
 ];
 
 const CAPABILITIES = [
-  { icon: Code2, label: 'Web Apps' },
-  { icon: Monitor, label: 'Desktop Apps' },
-  { icon: Brain, label: 'AI/ML' },
-  { icon: ShoppingCart, label: 'POS' },
-  { icon: Database, label: 'ERP' },
-  { icon: Zap, label: 'Automation' },
+  { icon: Code2, label: 'Web Apps', gradient: 'linear-gradient(135deg, #2563EB, #3B82F6)' },
+  { icon: Monitor, label: 'Desktop Apps', gradient: 'linear-gradient(135deg, #0F766E, #14B8A6)' },
+  { icon: Brain, label: 'AI/ML', gradient: 'linear-gradient(135deg, #059669, #10B981)' },
+  { icon: ShoppingCart, label: 'POS', gradient: 'linear-gradient(135deg, #D97706, #F59E0B)' },
+  { icon: Database, label: 'ERP', gradient: 'linear-gradient(135deg, #4F46E5, #6366F1)' },
+  { icon: Zap, label: 'Automation', gradient: 'linear-gradient(135deg, #BE185D, #EC4899)' },
 ];
 
 export default function HomePage({ visible }: { visible: boolean }) {
@@ -124,8 +133,13 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   {CAPABILITIES.map((c) => {
                     const Icon = c.icon;
                     return (
-                      <span key={c.label} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-medium text-[#0F172A]">
-                        <Icon className="w-3.5 h-3.5 text-[#2563EB]" />
+                      <span key={c.label} className="group inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-medium text-[#0F172A] hover:bg-white hover:shadow-soft transition-all">
+                        <span
+                          className="w-5 h-5 rounded-md inline-flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"
+                          style={{ background: c.gradient }}
+                        >
+                          <Icon className="w-3 h-3 text-white" strokeWidth={2.5} />
+                        </span>
                         {c.label}
                       </span>
                     );
@@ -137,8 +151,17 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   const Icon = p.icon;
                   return (
                     <StaggerItem key={p.title}>
-                      <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                        <div className="icon-modern w-8 h-8 mb-2.5"><Icon className="w-4 h-4" /></div>
+                      <div className="group p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:bg-white hover:shadow-premium transition-all text-center sm:text-left">
+                        <div
+                          className="relative w-10 h-10 rounded-xl inline-flex items-center justify-center mb-2.5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
+                          style={{ background: p.gradient, boxShadow: `0 6px 16px ${p.glow}` }}
+                        >
+                          <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+                          <div className="absolute inset-0 rounded-xl overflow-hidden">
+                            <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
+                              style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }} />
+                          </div>
+                        </div>
                         <div className="text-xs font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{p.title}</div>
                         <p className="text-[11px] text-[#475569] mt-1 leading-relaxed">{p.text}</p>
                       </div>

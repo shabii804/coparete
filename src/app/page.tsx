@@ -15,6 +15,7 @@ import BlogPage from '@/components/minhas/pages/BlogPage';
 import ContactPage from '@/components/minhas/pages/ContactPage';
 import Footer from '@/components/minhas/Footer';
 import QuoteModal from '@/components/minhas/QuoteModal';
+import WhatsAppButton from '@/components/minhas/WhatsAppButton';
 import { NavProvider, type PageId } from '@/components/minhas/NavigationContext';
 
 export default function Home() {
@@ -49,6 +50,9 @@ export default function Home() {
     <NavProvider value={{ navigate, currentPage: page, openQuote }}>
       {loading && <Preloader onComplete={handlePreloaderComplete} />}
 
+      <ScrollProgress />
+      <Navbar visible={showContent} />
+
       <div
         className="relative min-h-screen flex flex-col bg-white transition-all duration-1000"
         style={{
@@ -56,8 +60,6 @@ export default function Home() {
           opacity: loading ? 0.4 : 1,
         }}
       >
-        <ScrollProgress />
-        <Navbar visible={showContent} />
         <main className="flex-1">
           {page === 'home' && <HomePage visible={showContent} />}
           {page === 'about' && <AboutPage />}
@@ -73,6 +75,7 @@ export default function Home() {
       </div>
 
       <QuoteModal open={quoteOpen} onClose={closeQuote} />
+      <WhatsAppButton />
     </NavProvider>
   );
 }

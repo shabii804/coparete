@@ -89,7 +89,12 @@ export default function Industries() {
                         className="relative w-11 h-11 md:w-12 md:h-12 rounded-xl inline-flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                         style={{ background: `linear-gradient(135deg, ${ind.color}, ${ind.color}cc)`, boxShadow: `0 6px 16px ${ind.color}30` }}
                       >
-                        <Icon className="relative w-5 h-5 md:w-6 md:h-6 text-white" />
+                        <Icon className="relative w-5 h-5 md:w-6 md:h-6 text-white" strokeWidth={2} />
+                        {/* Shine */}
+                        <div className="absolute inset-0 rounded-xl overflow-hidden">
+                          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
+                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }} />
+                        </div>
                       </div>
                       <ArrowUpRight className="w-4 h-4 text-[#94A3B8] group-hover:text-[#0F172A] transition-colors" />
                     </div>

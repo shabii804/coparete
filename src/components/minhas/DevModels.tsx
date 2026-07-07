@@ -113,7 +113,12 @@ export default function DevModels() {
                           boxShadow: `0 6px 16px ${m.color}30`,
                         }}
                       >
-                        <Icon className="w-5 h-5 text-white" />
+                        <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+                        {/* Shine */}
+                        <div className="absolute inset-0 rounded-xl overflow-hidden">
+                          <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
+                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }} />
+                        </div>
                       </motion.div>
                       <div>
                         <h3 className="text-base font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{m.name}</h3>
