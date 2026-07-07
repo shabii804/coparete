@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play, ChevronDown, Sparkles, TrendingUp, Globe2, Award, FileText } from 'lucide-react';
+import { useNav } from './NavigationContext';
 
 const HERO_HEADLINE_LINES = ['Building Tomorrow,', 'Today.'];
 
@@ -48,7 +49,8 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
   );
 }
 
-export default function Hero({ visible, onQuoteClick }: { visible: boolean; onQuoteClick?: () => void }) {
+export default function Hero({ visible }: { visible: boolean }) {
+  const { navigate, openQuote } = useNav();
   const { scrollY } = useScroll();
   const videoY = useTransform(scrollY, [0, 700], [0, 140]);
   const contentY = useTransform(scrollY, [0, 700], [0, 60]);
@@ -165,22 +167,22 @@ export default function Hero({ visible, onQuoteClick }: { visible: boolean; onQu
             className="mt-8 md:mt-9 flex flex-wrap items-center gap-3 md:gap-4"
           >
             <button
-              onClick={onQuoteClick}
+              onClick={openQuote}
               className="group inline-flex items-center gap-2 px-5 md:px-7 py-3 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1E40AF] shadow-premium-lg hover:shadow-glow-blue transition-all duration-500 hover:-translate-y-1"
             >
               <FileText className="w-4 h-4 md:w-5 md:h-5" />
               Get a Free Quote
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            <a
-              href="#about"
+            <button
+              onClick={() => navigate('about')}
               className="group inline-flex items-center gap-2 px-5 md:px-7 py-3 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-[#0F172A] bg-white/80 backdrop-blur-md border border-[#E2E8F0] hover:border-[#2563EB] hover:bg-white shadow-soft hover:shadow-premium transition-all duration-500 hover:-translate-y-1"
             >
               <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#2563EB] to-[#10B981] inline-flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Play className="w-3 h-3 md:w-3.5 md:h-3.5 text-white fill-white ml-0.5" />
               </span>
               Our Story
-            </a>
+            </button>
           </motion.div>
 
           <motion.div

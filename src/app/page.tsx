@@ -3,28 +3,24 @@
 import { useEffect, useState } from 'react';
 import Preloader from '@/components/minhas/Preloader';
 import Navbar from '@/components/minhas/Navbar';
-import Hero from '@/components/minhas/Hero';
-import TrustedClients from '@/components/minhas/TrustedClients';
-import About from '@/components/minhas/About';
-import Services from '@/components/minhas/Services';
-import Products from '@/components/minhas/Products';
-import Industries from '@/components/minhas/Industries';
-import WhyChooseUs from '@/components/minhas/WhyChooseUs';
-import Impact from '@/components/minhas/Impact';
-import Process from '@/components/minhas/Process';
-import Projects from '@/components/minhas/Projects';
-import Technologies from '@/components/minhas/Technologies';
-import Testimonials from '@/components/minhas/Testimonials';
-import Team from '@/components/minhas/Team';
-import Blog from '@/components/minhas/Blog';
-import FAQ from '@/components/minhas/FAQ';
-import Contact from '@/components/minhas/Contact';
+import ScrollProgress from '@/components/minhas/ScrollProgress';
+import HomePage from '@/components/minhas/HomePage';
+import AboutPage from '@/components/minhas/pages/AboutPage';
+import ServicesPage from '@/components/minhas/pages/ServicesPage';
+import ProductsPage from '@/components/minhas/pages/ProductsPage';
+import IndustriesPage from '@/components/minhas/pages/IndustriesPage';
+import PortfolioPage from '@/components/minhas/pages/PortfolioPage';
+import TeamPage from '@/components/minhas/pages/TeamPage';
+import BlogPage from '@/components/minhas/pages/BlogPage';
+import ContactPage from '@/components/minhas/pages/ContactPage';
 import Footer from '@/components/minhas/Footer';
 import QuoteModal from '@/components/minhas/QuoteModal';
+import { NavProvider, type PageId } from '@/components/minhas/NavigationContext';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [page, setPage] = useState<PageId>('home');
   const [quoteOpen, setQuoteOpen] = useState(false);
 
   useEffect(() => {
@@ -33,9 +29,7 @@ export default function Home() {
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [loading]);
 
   const handlePreloaderComplete = () => {
@@ -43,11 +37,16 @@ export default function Home() {
     setTimeout(() => setShowContent(true), 80);
   };
 
+  const navigate = (p: PageId) => {
+    setPage(p);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const openQuote = () => setQuoteOpen(true);
   const closeQuote = () => setQuoteOpen(false);
 
   return (
-    <>
+    <NavProvider value={{ navigate, currentPage: page, openQuote }}>
       {loading && <Preloader onComplete={handlePreloaderComplete} />}
 
       <div
@@ -57,29 +56,23 @@ export default function Home() {
           opacity: loading ? 0.4 : 1,
         }}
       >
-        <Navbar visible={showContent} onQuoteClick={openQuote} />
+        <ScrollProgress />
+        <Navbar visible={showContent} />
         <main className="flex-1">
-          <Hero visible={showContent} onQuoteClick={openQuote} />
-          <TrustedClients />
-          <About />
-          <Services />
-          <Products />
-          <Industries />
-          <WhyChooseUs />
-          <Impact />
-          <Process />
-          <Projects />
-          <Technologies />
-          <Testimonials />
-          <Team />
-          <Blog />
-          <FAQ />
-          <Contact onQuoteClick={openQuote} />
+          {page === 'home' && <HomePage visible={showContent} />}
+          {page === 'about' && <AboutPage />}
+          {page === 'services' && <ServicesPage />}
+          {page === 'products' && <ProductsPage />}
+          {page === 'industries' && <IndustriesPage />}
+          {page === 'portfolio' && <PortfolioPage />}
+          {page === 'team' && <TeamPage />}
+          {page === 'blog' && <BlogPage />}
+          {page === 'contact' && <ContactPage />}
         </main>
         <Footer />
       </div>
 
       <QuoteModal open={quoteOpen} onClose={closeQuote} />
-    </>
+    </NavProvider>
   );
 }
