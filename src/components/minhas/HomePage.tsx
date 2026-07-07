@@ -188,44 +188,65 @@ export default function HomePage({ visible }: { visible: boolean }) {
       {/* 3. Services */}
       <section id="services" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
+        <div className="absolute top-1/4 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
+        <div className="absolute bottom-1/4 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
         <div className="container-premium relative">
           <SectionHeading
             eyebrow="What We Build"
             title={<>Software solutions for <span className="text-gradient-royal">every business need.</span></>}
             description="From ERP to AI, POS to school management — we engineer products that scale."
           />
-          <StaggerGroup className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+          <StaggerGroup className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.08}>
             {SERVICES_PREVIEW.map((s) => {
               const Icon = s.icon;
               return (
                 <StaggerItem key={s.title}>
                   <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="group h-full p-5 rounded-2xl bg-white border border-[#E2E8F0] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all overflow-hidden relative"
+                    whileHover={{ y: -8 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+                    className="group h-full p-6 rounded-2xl bg-white border border-[#E2E8F0] hover:border-transparent hover:shadow-[0_20px_50px_rgba(0,0,0,0.10)] transition-all overflow-hidden relative text-center"
                   >
-                    {/* Glow on hover */}
+                    {/* Top gradient accent line */}
                     <div
-                      className="absolute -top-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
+                      className="absolute top-0 left-0 right-0 h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                      style={{ background: s.gradient }}
+                    />
+                    {/* Centered glow on hover */}
+                    <div
+                      className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500 pointer-events-none"
                       style={{ background: `radial-gradient(circle, ${s.glow}, transparent 70%)` }}
                     />
-                    <div className="relative">
-                      {/* Premium gradient icon */}
-                      <div
-                        className="relative w-14 h-14 rounded-2xl inline-flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
-                        style={{ background: s.gradient, boxShadow: `0 8px 20px ${s.glow}` }}
+                    <div className="relative flex flex-col items-center">
+                      {/* Premium gradient icon — centered */}
+                      <motion.div
+                        whileHover={{ scale: 1.12, rotate: 4 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 12 }}
+                        className="relative w-16 h-16 rounded-2xl inline-flex items-center justify-center mb-4"
+                        style={{ background: s.gradient, boxShadow: `0 12px 32px ${s.glow}, 0 4px 12px ${s.glow}` }}
                       >
-                        <Icon className="w-7 h-7 text-white" strokeWidth={2} />
-                        {/* Shine */}
+                        <Icon className="w-8 h-8 text-white" strokeWidth={2} />
+                        {/* Shine sweep */}
                         <div className="absolute inset-0 rounded-2xl overflow-hidden">
                           <div
-                            className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
-                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }}
+                            className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-60 transition-opacity duration-500"
+                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%)' }}
                           />
                         </div>
-                      </div>
+                        {/* Pulse ring on hover */}
+                        <div
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100"
+                          style={{ border: `2px solid ${s.glow.replace('0.35', '0.6')}`, animation: 'pulse-ring 2s ease-out infinite' }}
+                        />
+                      </motion.div>
                       <h3 className="text-base font-bold text-[#0F172A] mb-1.5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{s.title}</h3>
                       <p className="text-xs text-[#475569] leading-relaxed">{s.desc}</p>
+                      {/* Learn more arrow — appears on hover */}
+                      <div className="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0" style={{ color: s.glow.replace('rgba(', '').replace(')', '').split(',')[0].trim() === '37' ? '#2563EB' : s.glow.replace('rgba(', '').replace(')', '').split(',')[0].trim() === '16' ? '#10B981' : s.glow.includes('99, 102, 241') ? '#6366F1' : s.glow.includes('20, 184, 166') ? '#14B8A6' : s.glow.includes('236, 72, 153') ? '#EC4899' : '#F59E0B' }}>
+                        Learn More
+                        <ArrowUpRight className="w-3 h-3" />
+                      </div>
                     </div>
                   </motion.div>
                 </StaggerItem>
@@ -234,9 +255,9 @@ export default function HomePage({ visible }: { visible: boolean }) {
           </StaggerGroup>
           <Reveal delay={0.2}>
             <div className="mt-6 text-center">
-              <button onClick={() => navigate('services')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-white border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all">
+              <button onClick={() => navigate('services')} className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] shadow-[0_8px_24px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_32px_rgba(37,99,235,0.35)] hover:-translate-y-0.5 transition-all">
                 View All Services
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </div>
           </Reveal>
