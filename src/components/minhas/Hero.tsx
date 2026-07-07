@@ -127,7 +127,7 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* ===== Hero content ===== */}
       <motion.div
-        className="relative z-10 container-premium min-h-screen flex flex-col justify-center pt-32 pb-20"
+        className="relative z-10 container-premium min-h-screen flex flex-col justify-center pt-28 pb-16"
         style={{ y: contentY }}
       >
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
@@ -145,13 +145,13 @@ export default function Hero({ visible }: { visible: boolean }) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
               </span>
               <span className="text-xs font-semibold tracking-wide text-[#0F172A]">
-                A Diversified Conglomerate · Est. 2001
+                A Technology Company · Est. 2001
               </span>
             </motion.div>
 
             {/* Premium headline */}
             <h1
-              className="hero-heading-premium text-[2.5rem] sm:text-[3.25rem] lg:text-[4.5rem] xl:text-[5rem]"
+              className="hero-heading-premium text-[2rem] sm:text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem]"
             >
               <span className="block overflow-hidden">
                 <motion.span
@@ -160,7 +160,7 @@ export default function Hero({ visible }: { visible: boolean }) {
                   animate={visible ? { y: '0%' } : {}}
                   transition={{ delay: 0.35, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  Building the Future
+                  Building Software
                 </motion.span>
               </span>
               <span className="block overflow-hidden">
@@ -170,7 +170,7 @@ export default function Hero({ visible }: { visible: boolean }) {
                   animate={visible ? { y: '0%' } : {}}
                   transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  with <span className="text-[#2563EB]">Innovation</span>,
+                  that <span className="text-[#2563EB]">Empowers</span>
                 </motion.span>
               </span>
               <span className="block overflow-hidden">
@@ -180,7 +180,7 @@ export default function Hero({ visible }: { visible: boolean }) {
                   animate={visible ? { y: '0%' } : {}}
                   transition={{ delay: 0.65, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  Integrity & Excellence.
+                  Businesses Worldwide.
                 </motion.span>
               </span>
             </h1>
@@ -190,11 +190,10 @@ export default function Hero({ visible }: { visible: boolean }) {
               initial={{ opacity: 0, y: 24 }}
               animate={visible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.85, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 hero-paragraph-premium"
+              className="mt-6 hero-paragraph-premium !text-base md:!text-lg"
             >
-              Minhas Enterprises is a diversified group delivering excellence across industries —
-              from real estate and trading to technology and energy. We build with integrity,
-              innovate with purpose, and grow alongside the communities we serve.
+              We build ERP systems, AI solutions, POS platforms, school management software, and
+              desktop applications that help businesses operate smarter, faster, and at scale.
             </motion.p>
 
             {/* Premium buttons */}

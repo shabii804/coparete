@@ -2,63 +2,74 @@
 
 import { motion } from 'framer-motion';
 import Hero from './Hero';
+import TechStack from './TechStack';
 import TrustedClients from './TrustedClients';
 import { Reveal, StaggerGroup, StaggerItem } from './Reveal';
 import SectionHeading from './SectionHeading';
 import { useNav } from './NavigationContext';
 import CTA from './CTA';
 import {
-  ArrowUpRight, Building2, ShoppingBag, Cpu, Zap, Truck, ShieldCheck,
-  Target, Eye, Heart, TrendingUp, Users, Award, Leaf, Star, Quote, ArrowRight,
+  ArrowUpRight, ArrowRight, Cpu, Brain, ShoppingCart, GraduationCap, Monitor, Database, Bot, Shield,
+  Target, Eye, Heart, Zap, Clock, Users, Code2, TrendingUp, Star, Quote, CheckCircle2,
 } from 'lucide-react';
 
+// Tech company services — ERP, AI, POS, School Management, Desktop Apps
 const SERVICES_PREVIEW = [
-  { icon: Building2, title: 'Real Estate', desc: 'Premium residential, commercial, and mixed-use developments.', color: '#2563EB' },
-  { icon: ShoppingBag, title: 'Trading & Distribution', desc: 'Global supply network across consumer and industrial categories.', color: '#10B981' },
-  { icon: Cpu, title: 'Technology', desc: 'Software, cloud, and digital transformation solutions.', color: '#F59E0B' },
-  { icon: Zap, title: 'Energy', desc: 'Sustainable solar, wind, and clean power infrastructure.', color: '#2563EB' },
-  { icon: Truck, title: 'Logistics', desc: 'End-to-end warehousing and freight infrastructure.', color: '#10B981' },
-  { icon: ShieldCheck, title: 'Investments', desc: 'Strategic capital across high-growth ventures.', color: '#F59E0B' },
+  { icon: Cpu, title: 'ERP Systems', desc: 'Unified enterprise platforms for finance, HR, inventory, and operations.', color: '#2563EB' },
+  { icon: Brain, title: 'AI & Machine Learning', desc: 'LLM integrations, computer vision, and predictive analytics.', color: '#10B981' },
+  { icon: ShoppingCart, title: 'POS Systems', desc: 'Cloud POS for retail, restaurants, and omnichannel commerce.', color: '#F59E0B' },
+  { icon: GraduationCap, title: 'School Management', desc: 'LMS, admissions, attendance, and parent portals.', color: '#2563EB' },
+  { icon: Monitor, title: 'Desktop Applications', desc: 'Cross-platform desktop apps built with Electron & Tauri.', color: '#10B981' },
+  { icon: Database, title: 'Custom Software', desc: 'Tailored web, mobile, and backend solutions at scale.', color: '#F59E0B' },
 ];
 
 const PILLARS = [
-  { icon: Target, title: 'Our Mission', text: 'Delivering world-class products that empower communities.' },
-  { icon: Eye, title: 'Our Vision', text: 'To be the most trusted diversified enterprise globally.' },
-  { icon: Heart, title: 'Our Values', text: 'Integrity, excellence, and stewardship in every decision.' },
+  { icon: Target, title: 'Our Mission', text: 'Building software that empowers businesses to operate smarter.' },
+  { icon: Eye, title: 'Our Vision', text: 'To be the most trusted technology partner in the region.' },
+  { icon: Heart, title: 'Our Values', text: 'Innovation, integrity, and excellence in every line of code.' },
 ];
 
 const REASONS = [
-  { icon: ShieldCheck, title: 'Trusted & Reliable', desc: 'Two decades of consistent delivery and ethical governance.' },
-  { icon: TrendingUp, title: 'Proven ROI', desc: 'Average client ROI of 280% within the first year.' },
-  { icon: Users, title: 'Expert Team', desc: '1,200+ specialists spanning six industries under one roof.' },
+  { icon: Zap, title: 'Rapid Delivery', desc: 'Agile sprints with 96% on-time delivery across 180+ projects.' },
+  { icon: Shield, title: 'Enterprise Security', desc: 'SOC 2, ISO 27001, GDPR-compliant infrastructure by default.' },
+  { icon: Users, title: 'Expert Team', desc: '1200+ engineers, designers, and product thinkers in-house.' },
 ];
 
 const IMPACT = [
-  { icon: Building2, value: '180+', label: 'Projects Delivered' },
-  { icon: Users, value: '1.2K+', label: 'Professionals' },
-  { icon: Award, value: '42', label: 'Industry Awards' },
-  { icon: Leaf, value: '35%', label: 'Renewable Mix' },
+  { icon: TrendingUp, value: '180+', label: 'Projects Delivered' },
+  { icon: Users, value: '1.2K+', label: 'Engineers & Experts' },
+  { icon: Star, value: '42', label: 'Industry Awards' },
+  { icon: Clock, value: '25+', label: 'Years Experience' },
 ];
 
 const PROJECTS_PREVIEW = [
-  { title: 'Skyline Residences', category: 'Real Estate', image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' },
-  { title: 'GreenGrid Solar', category: 'Energy', image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' },
-  { title: 'TradeBridge Platform', category: 'Technology', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80' },
+  { title: 'MinhasERP', category: 'Enterprise', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', desc: 'Unified ERP for finance, HR, and operations.' },
+  { title: 'EduFlow LMS', category: 'Education', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', desc: 'Learning management for 12K+ students.' },
+  { title: 'RetailOne POS', category: 'Retail', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', desc: 'Omnichannel POS across 50 stores.' },
 ];
 
 const TEAM_PREVIEW = [
-  { name: 'Imran Minhas', role: 'Founder & Chairman', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-  { name: 'Ayesha Minhas', role: 'Chief Executive Officer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-  { name: 'Bilal Ahmed', role: 'Chief Technology Officer', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-  { name: 'Sana Khan', role: 'Chief Operating Officer', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+  { name: 'Imran Minhas', role: 'Founder & CEO', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+  { name: 'Ayesha Minhas', role: 'CTO', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+  { name: 'Bilal Ahmed', role: 'VP of Engineering', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+  { name: 'Sana Khan', role: 'Head of Product', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
 ];
 
 const TESTIMONIAL = {
-  quote: 'Minhas Enterprises delivered our headquarters six months ahead of schedule without compromising on a single detail.',
+  quote: 'Minhas Enterprises rebuilt our entire ERP in 6 months — on time, on budget, and beyond what we imagined.',
   name: 'Ayesha Rahman',
   title: 'CEO, Nucleus Holdings',
   avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
 };
+
+const CAPABILITIES = [
+  { icon: Code2, label: 'Web Apps' },
+  { icon: Monitor, label: 'Desktop Apps' },
+  { icon: Brain, label: 'AI/ML' },
+  { icon: ShoppingCart, label: 'POS' },
+  { icon: Database, label: 'ERP' },
+  { icon: Bot, label: 'Automation' },
+];
 
 export default function HomePage({ visible }: { visible: boolean }) {
   const { navigate } = useNav();
@@ -68,10 +79,13 @@ export default function HomePage({ visible }: { visible: boolean }) {
       {/* 1. Hero */}
       <Hero visible={visible} />
 
-      {/* 2. Trusted Clients */}
+      {/* 2. Tech Stack — horizontal moving marquee */}
+      <TechStack />
+
+      {/* 3. Trusted Clients */}
       <TrustedClients />
 
-      {/* 3. About Preview */}
+      {/* 4. About Preview */}
       <section id="about" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
@@ -79,14 +93,23 @@ export default function HomePage({ visible }: { visible: boolean }) {
           <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
             <Reveal y={30} blur>
               <div className="relative">
-                <div className="img-zoom relative rounded-3xl overflow-hidden shadow-premium-lg aspect-[4/3]">
-                  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Minhas Enterprises" className="w-full h-full object-cover" />
+                <div className="img-zoom relative rounded-2xl overflow-hidden shadow-premium-lg aspect-[4/3]">
+                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Minhas Enterprises team" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 to-transparent" />
                 </div>
-                <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 5, repeat: Infinity }}
-                  className="absolute -bottom-4 -left-3 md:-left-6 p-3 rounded-2xl glass-strong border border-white/70 shadow-premium-lg">
-                  <div className="text-2xl font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>5+</div>
-                  <div className="text-[10px] text-[#475569]">Industries served</div>
+                {/* Floating capability card */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  className="absolute -bottom-4 -left-3 md:-left-6 p-3 rounded-2xl glass-strong border border-white/70 shadow-premium-lg"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] to-[#10B981] inline-flex items-center justify-center">
+                      <Zap className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>6+</div>
+                  </div>
+                  <div className="text-[10px] text-[#475569]">Core capabilities</div>
                 </motion.div>
               </div>
             </Reveal>
@@ -94,16 +117,30 @@ export default function HomePage({ visible }: { visible: boolean }) {
               <SectionHeading
                 align="left"
                 eyebrow="About Minhas"
-                title={<>A legacy of trust, built across <span className="text-gradient-royal">industries.</span></>}
+                title={<>A technology company building <span className="text-gradient-royal">software that matters.</span></>}
               />
               <Reveal delay={0.15}>
                 <p className="mt-3 text-fluid-sm text-[#475569] leading-relaxed">
-                  From a single venture founded in 2001, Minhas Enterprises has grown into a diversified
-                  group spanning real estate, trading, technology, and energy. Our journey has been shaped
-                  by an unwavering commitment to quality and a deep sense of responsibility to the communities we serve.
+                  Minhas Enterprises is a full-stack technology company specializing in ERP systems,
+                  AI solutions, POS platforms, school management software, and desktop applications.
+                  For over two decades, we've helped businesses digitize, automate, and scale.
                 </p>
               </Reveal>
-              <StaggerGroup className="mt-3 grid sm:grid-cols-3 gap-3" stagger={0.08}>
+              {/* Capabilities chips */}
+              <Reveal delay={0.2}>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {CAPABILITIES.map((c) => {
+                    const Icon = c.icon;
+                    return (
+                      <span key={c.label} className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-medium text-[#0F172A]">
+                        <Icon className="w-3.5 h-3.5 text-[#2563EB]" />
+                        {c.label}
+                      </span>
+                    );
+                  })}
+                </div>
+              </Reveal>
+              <StaggerGroup className="mt-5 grid sm:grid-cols-3 gap-3" stagger={0.08}>
                 {PILLARS.map((p) => {
                   const Icon = p.icon;
                   return (
@@ -118,7 +155,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
                 })}
               </StaggerGroup>
               <Reveal delay={0.3}>
-                <button onClick={() => navigate('about')} className="group mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
+                <button onClick={() => navigate('about')} className="group mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
                   Learn More
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
@@ -128,16 +165,16 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 4. Services Preview */}
+      {/* 5. Services Preview */}
       <section id="services" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
           <SectionHeading
-            eyebrow="What We Do"
-            title={<>Six divisions. <span className="text-gradient-royal">One standard of excellence.</span></>}
-            description="Our diversified portfolio serves clients across multiple industries with depth and focus."
+            eyebrow="What We Build"
+            title={<>Software solutions for <span className="text-gradient-royal">every business need.</span></>}
+            description="From ERP to AI, POS to school management — we engineer products that scale."
           />
-          <StaggerGroup className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+          <StaggerGroup className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
             {SERVICES_PREVIEW.map((s) => {
               const Icon = s.icon;
               return (
@@ -157,7 +194,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             })}
           </StaggerGroup>
           <Reveal delay={0.2}>
-            <div className="mt-5 text-center">
+            <div className="mt-6 text-center">
               <button onClick={() => navigate('services')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-white border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all">
                 View All Services
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -167,7 +204,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 5. Why Choose Us */}
+      {/* 6. Why Choose Us */}
       <section className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-1/4 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
@@ -177,7 +214,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             eyebrowColor="emerald"
             title={<>Three reasons clients <span className="text-gradient-royal">choose Minhas.</span></>}
           />
-          <StaggerGroup className="mt-8 grid md:grid-cols-3 gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid md:grid-cols-3 gap-4" stagger={0.08}>
             {REASONS.map((r, i) => {
               const Icon = r.icon;
               return (
@@ -195,7 +232,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 6. Impact Stats — fixed to prevent overflow */}
+      {/* 7. Impact Stats */}
       <section className="relative py-10 md:py-14 overflow-hidden bg-[#0F172A]">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
@@ -208,7 +245,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             eyebrowColor="dark"
             title={<>Numbers that <span className="text-gradient-gold">tell our story.</span></>}
           />
-          <StaggerGroup className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" stagger={0.08}>
             {IMPACT.map((s) => {
               const Icon = s.icon;
               return (
@@ -217,7 +254,6 @@ export default function HomePage({ visible }: { visible: boolean }) {
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#10B981] inline-flex items-center justify-center mb-3 shadow-glow-blue group-hover:scale-110 transition-transform">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                    {/* Fixed: use text-2xl/3xl and break-words to prevent overflow */}
                     <div className="text-2xl md:text-3xl font-bold text-white break-words" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                       {s.value}
                     </div>
@@ -230,15 +266,15 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 7. Featured Projects Preview */}
+      {/* 8. Featured Projects Preview */}
       <section id="projects" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="container-premium relative">
           <SectionHeading
-            eyebrow="Featured Projects"
+            eyebrow="Featured Products"
             eyebrowColor="gold"
-            title={<>Work that <span className="text-gradient-royal">speaks for itself.</span></>}
+            title={<>Products that <span className="text-gradient-royal">power businesses.</span></>}
           />
-          <StaggerGroup className="mt-8 grid md:grid-cols-3 gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid md:grid-cols-3 gap-4" stagger={0.08}>
             {PROJECTS_PREVIEW.map((p) => (
               <StaggerItem key={p.title}>
                 <div className="group relative overflow-hidden rounded-2xl shadow-premium hover:shadow-premium-lg aspect-[4/3]">
@@ -249,15 +285,16 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   <div className="absolute inset-0 p-4 flex flex-col justify-end text-white">
                     <span className="px-2 py-0.5 rounded-full bg-white/15 backdrop-blur text-[10px] font-semibold uppercase tracking-wider w-fit mb-1.5">{p.category}</span>
                     <h3 className="text-base font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{p.title}</h3>
+                    <p className="text-[11px] text-white/80 mt-0.5">{p.desc}</p>
                   </div>
                 </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
           <Reveal delay={0.2}>
-            <div className="mt-5 text-center">
+            <div className="mt-6 text-center">
               <button onClick={() => navigate('portfolio')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all">
-                View Full Portfolio
+                View All Products
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </div>
@@ -265,7 +302,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 8. Team Preview — NEW */}
+      {/* 9. Team Preview */}
       <section className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
@@ -274,7 +311,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
               align="left"
               eyebrow="Our Team"
               eyebrowColor="emerald"
-              title={<>Meet the people behind <span className="text-gradient-royal">the enterprise.</span></>}
+              title={<>Meet the people behind <span className="text-gradient-royal">the technology.</span></>}
             />
             <Reveal delay={0.15}>
               <button onClick={() => navigate('team')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-white border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all whitespace-nowrap">
@@ -283,7 +320,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
               </button>
             </Reveal>
           </div>
-          <StaggerGroup className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.08}>
             {TEAM_PREVIEW.map((m) => (
               <StaggerItem key={m.name}>
                 <div className="group relative rounded-2xl overflow-hidden bg-white border border-[#E2E8F0] hover:shadow-premium-lg transition-all">
@@ -302,7 +339,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 9. Testimonial highlight */}
+      {/* 10. Testimonial highlight */}
       <section className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #F59E0B, transparent 70%)' }} />
@@ -327,14 +364,14 @@ export default function HomePage({ visible }: { visible: boolean }) {
             </div>
           </Reveal>
           <Reveal delay={0.22}>
-            <div className="mt-3 flex justify-center gap-1">
+            <div className="mt-5 flex justify-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />)}
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* 10. CTA */}
+      {/* 11. CTA */}
       <CTA />
     </>
   );
