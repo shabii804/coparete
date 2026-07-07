@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS services (
   title TEXT NOT NULL,
   description TEXT NOT NULL,
   icon TEXT DEFAULT 'Cpu',
+  image TEXT,
   color TEXT DEFAULT '#2563EB',
   gradient TEXT DEFAULT 'linear-gradient(135deg, #2563EB, #3B82F6)',
   glow TEXT DEFAULT 'rgba(37,99,235,0.35)',
@@ -114,6 +115,7 @@ CREATE TABLE IF NOT EXISTS industries (
   name TEXT NOT NULL,
   description TEXT,
   icon TEXT DEFAULT 'Building2',
+  image TEXT,
   color TEXT DEFAULT '#2563EB',
   bg TEXT DEFAULT '#EFF6FF',
   challenges TEXT, -- JSON array
@@ -179,6 +181,7 @@ CREATE TABLE IF NOT EXISTS dev_models (
   name TEXT NOT NULL,
   description TEXT,
   icon TEXT DEFAULT 'Repeat',
+  image TEXT,
   color TEXT DEFAULT '#2563EB',
   gradient TEXT DEFAULT 'linear-gradient(135deg, #2563EB, #3B82F6)',
   glow TEXT DEFAULT 'rgba(37,99,235,0.35)',

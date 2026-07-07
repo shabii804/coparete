@@ -83,6 +83,7 @@ model Service {
   title       String
   description String
   icon        String   // Lucide icon name
+  image       String?  // image URL
   color       String   // hex color
   gradient    String   // CSS gradient
   glow        String   // glow color
@@ -122,6 +123,7 @@ model Industry {
   name        String
   description String
   icon        String
+  image       String?  // image URL
   color       String
   bg          String   // background color
   challenges  String   // JSON array
@@ -187,6 +189,7 @@ model DevModel {
   name        String
   description String
   icon        String
+  image       String?  // image URL
   color       String
   gradient    String
   glow        String

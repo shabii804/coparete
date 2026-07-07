@@ -4,7 +4,14 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Reveal, StaggerGroup, StaggerItem } from './Reveal';
 import SectionHeading from './SectionHeading';
+import { getIcon } from './IconResolver';
 import { Repeat, GitBranch, Waves, Rocket, Users, Target, Search, PenTool, Code2, TestTube, Cloud, RefreshCw, ArrowRight, Zap, Clock, TrendingUp } from 'lucide-react';
+
+// Helper to parse JSON string fields
+function parseJSON(val: string | null | undefined, fallback: any[] = []): any[] {
+  if (!val) return fallback;
+  try { return JSON.parse(val); } catch { return fallback; }
+}
 
 const MODELS = [
   {
@@ -112,6 +119,25 @@ export default function DevModels() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const lineGlow = useTransform(scrollYProgress, [0, 1], ['0 0 0px rgba(37,99,235,0)', '0 0 20px rgba(37,99,235,0.5)']);
 
+  // Fetch dev models from API
+  const [models, setModels] = useState(MODELS);
+  useEffect(() => {
+    fetch('/api/devmodels').then(r => r.json()).then(data => {
+      if (Array.isArray(data) && data.length > 0) {
+        setModels(data.map(m => ({
+          icon: getIcon(m.icon),
+          name: m.name,
+          gradient: m.gradient || 'linear-gradient(135deg, #2563EB, #3B82F6)',
+          glow: m.glow || 'rgba(37,99,235,0.4)',
+          color: m.color || '#2563EB',
+          desc: m.description,
+          steps: parseJSON(m.steps, []),
+          best: m.best,
+        })));
+      }
+    }).catch(() => {});
+  }, []);
+
   return (
     <section className="relative py-10 md:py-14 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
@@ -131,7 +157,7 @@ export default function DevModels() {
 
         {/* Models grid — modern centered cards */}
         <StaggerGroup className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.08}>
-          {MODELS.map((m) => {
+          {models.map((m) => {
             const Icon = m.icon;
             return (
               <StaggerItem key={m.name}>

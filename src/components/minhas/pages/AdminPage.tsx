@@ -29,11 +29,12 @@ const TABS: { id: AdminTab; label: string; icon: any; apiType?: string }[] = [
   { id: 'messages', label: 'Messages', icon: Mail },
 ];
 
-const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' | 'textarea' | 'json' | 'checkbox' | 'select' }[]> = {
+const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' | 'textarea' | 'json' | 'checkbox' | 'select' | 'image' }[]> = {
   services: [
     { key: 'title', label: 'Title', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
     { key: 'icon', label: 'Icon (Lucide name)', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'color', label: 'Color (hex)', type: 'text' },
     { key: 'gradient', label: 'Gradient CSS', type: 'text' },
     { key: 'glow', label: 'Glow color', type: 'text' },
@@ -46,7 +47,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'name', label: 'Name', type: 'text' },
     { key: 'tagline', label: 'Tagline', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
-    { key: 'image', label: 'Image URL', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'price', label: 'Price', type: 'text' },
     { key: 'badge', label: 'Badge', type: 'text' },
     { key: 'icon', label: 'Icon', type: 'text' },
@@ -63,6 +64,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'name', label: 'Name', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
     { key: 'icon', label: 'Icon', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'color', label: 'Color', type: 'text' },
     { key: 'bg', label: 'Background color', type: 'text' },
     { key: 'challenges', label: 'Challenges (one per line)', type: 'json' },
@@ -75,7 +77,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'name', label: 'Name', type: 'text' },
     { key: 'role', label: 'Role', type: 'text' },
     { key: 'bio', label: 'Bio', type: 'textarea' },
-    { key: 'image', label: 'Image URL', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'accent', label: 'Accent color', type: 'text' },
     { key: 'experience', label: 'Experience', type: 'text' },
     { key: 'skills', label: 'Skills (one per line)', type: 'json' },
@@ -88,7 +90,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'title', label: 'Title', type: 'text' },
     { key: 'excerpt', label: 'Excerpt', type: 'textarea' },
     { key: 'content', label: 'Content', type: 'textarea' },
-    { key: 'image', label: 'Image URL', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'category', label: 'Category', type: 'text' },
     { key: 'author', label: 'Author', type: 'text' },
     { key: 'readTime', label: 'Read Time', type: 'text' },
@@ -99,7 +101,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'quote', label: 'Quote', type: 'textarea' },
     { key: 'name', label: 'Name', type: 'text' },
     { key: 'title', label: 'Title / Company', type: 'text' },
-    { key: 'avatar', label: 'Avatar URL', type: 'text' },
+    { key: 'avatar', label: 'Avatar URL', type: 'image' },
     { key: 'rating', label: 'Rating (1-5)', type: 'text' },
     { key: 'sortOrder', label: 'Sort Order', type: 'text' },
     { key: 'active', label: 'Active', type: 'checkbox' },
@@ -108,6 +110,7 @@ const CONTENT_FIELDS: Record<string, { key: string; label: string; type: 'text' 
     { key: 'name', label: 'Name', type: 'text' },
     { key: 'description', label: 'Description', type: 'textarea' },
     { key: 'icon', label: 'Icon', type: 'text' },
+    { key: 'image', label: 'Image URL', type: 'image' },
     { key: 'color', label: 'Color', type: 'text' },
     { key: 'gradient', label: 'Gradient', type: 'text' },
     { key: 'glow', label: 'Glow', type: 'text' },
@@ -360,7 +363,13 @@ export default function AdminPage() {
                 <div className="space-y-2">
                   {filteredItems.map((item) => (
                     <div key={item.id} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#E2E8F0] shadow-soft">
-                      {item.color && <div className="w-8 h-8 rounded-lg flex-shrink-0" style={{ background: item.gradient || item.color }} />}
+                      {item.image || item.avatar ? (
+                        <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 border border-[#E2E8F0]">
+                          <img src={item.image || item.avatar} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      ) : item.color ? (
+                        <div className="w-8 h-8 rounded-lg flex-shrink-0" style={{ background: item.gradient || item.color }} />
+                      ) : null}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-sm font-bold text-[#0F172A] truncate">{item.title || item.name || item.quote?.substring(0, 40) + '...'}</span>
@@ -576,6 +585,16 @@ function ContentModal({ open, onClose, item, fields, apiType, onSave }: {
                       <input type="checkbox" checked={!!form[f.key]} onChange={(e) => setForm({ ...form, [f.key]: e.target.checked })} className="w-4 h-4 rounded" />
                       <span className="text-xs text-[#0F172A] font-medium">{form[f.key] ? 'Yes' : 'No'}</span>
                     </label>
+                  ) : f.type === 'image' ? (
+                    <div className="space-y-2">
+                      <input value={form[f.key] || ''} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} placeholder="https://..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-all" />
+                      {form[f.key] && (
+                        <div className="relative w-full h-32 rounded-xl overflow-hidden border border-[#E2E8F0]">
+                          <img src={form[f.key]} alt="Preview" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                    </div>
                   ) : (
                     <input value={form[f.key] || ''} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB] focus:bg-white transition-all" />
