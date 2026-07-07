@@ -6,6 +6,7 @@ import Navbar from '@/components/minhas/Navbar';
 import Hero from '@/components/minhas/Hero';
 import About from '@/components/minhas/About';
 import Services from '@/components/minhas/Services';
+import Team from '@/components/minhas/Team';
 import Impact from '@/components/minhas/Impact';
 import Projects from '@/components/minhas/Projects';
 import Testimonials from '@/components/minhas/Testimonials';
@@ -50,6 +51,7 @@ export default function Home() {
           <Hero visible={showContent} />
           <About />
           <Services />
+          <Team />
           <Impact />
           <Projects />
           <Testimonials />

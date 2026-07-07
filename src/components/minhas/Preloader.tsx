@@ -118,9 +118,10 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               {COMPANY_NAME.split('').map((ch, i) => (
                 <span
                   key={i}
-                  className="inline-block text-2xl md:text-3xl font-light tracking-[0.35em]"
+                  className="inline-block text-2xl md:text-4xl font-medium tracking-[0.32em]"
                   style={{
                     color: '#0F172A',
+                    fontFamily: 'var(--font-display), sans-serif',
                     opacity: 0,
                     animation: stage >= 2
                       ? `letter-reveal 0.55s cubic-bezier(0.16,1,0.3,1) ${0.04 * i}s forwards`

@@ -30,15 +30,15 @@ export default function Footer() {
     <footer className="relative bg-[#0F172A] text-white overflow-hidden">
       {/* Decorative top glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent" />
-      <div className="absolute -top-32 left-1/4 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
+      <div className="absolute -top-32 left-1/4 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
 
       {/* Newsletter */}
       <div className="relative border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 py-12 md:py-16">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 py-10 md:py-16">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
             <Reveal>
-              <h3 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+              <h3 className="text-fluid-2xl md:text-fluid-3xl font-semibold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 Subscribe to our <span className="text-gradient-gold">newsletter</span>
               </h3>
               <p className="mt-3 text-sm text-white/60 max-w-md leading-relaxed">
@@ -61,7 +61,7 @@ export default function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium hover:-translate-y-0.5 transition-all"
+                  className="group inline-flex items-center justify-center gap-2 px-5 md:px-6 py-3.5 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium hover:-translate-y-0.5 transition-all"
                 >
                   Subscribe
                   <ArrowUpRight className="w-4 h-4 text-[#2563EB] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -73,19 +73,19 @@ export default function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-14 md:py-20">
-        <div className="grid lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 lg:gap-12">
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-12 md:py-20">
+        <div className="grid lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl overflow-hidden shadow-premium">
+              <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden shadow-premium">
                 <img src="/minhas-logo.svg" alt="Minhas Enterprises" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="text-lg font-semibold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+                <div className="text-base md:text-lg font-semibold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   Minhas Enterprises
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.32em] text-[#2563EB] font-medium">
+                <div className="text-[9px] md:text-[10px] uppercase tracking-[0.32em] text-[#2563EB] font-medium mt-0.5">
                   Building Tomorrow, Today
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function Footer() {
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 inline-flex items-center justify-center text-white/60 hover:text-white hover:bg-[#2563EB] hover:border-[#2563EB] transition-all duration-300"
+                    className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/5 border border-white/10 inline-flex items-center justify-center text-white/60 hover:text-white hover:bg-[#2563EB] hover:border-[#2563EB] transition-all duration-300"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -117,10 +117,10 @@ export default function Footer() {
           {FOOTER_LINKS.map((col, i) => (
             <Reveal key={col.title} delay={0.05 * i}>
               <div>
-                <h4 className="text-xs uppercase tracking-[0.2em] text-white/50 font-semibold mb-5">
+                <h4 className="text-[11px] uppercase tracking-[0.2em] text-white/50 font-semibold mb-4 md:mb-5">
                   {col.title}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-2.5 md:space-y-3">
                   {col.links.map((link) => (
                     <li key={link}>
                       <a
@@ -141,11 +141,11 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="relative border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 py-5 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           <p className="text-xs text-white/50">
             © {new Date().getFullYear()} Minhas Enterprises. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-white/50">
+          <div className="flex items-center gap-4 md:gap-6 text-xs text-white/50">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>

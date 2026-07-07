@@ -55,28 +55,28 @@ export default function Projects() {
   const visible = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="relative py-24 md:py-32 bg-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
+    <section id="projects" className="relative py-20 md:py-32 bg-white overflow-hidden">
+      <div className="absolute top-0 right-0 w-[32rem] h-[32rem] md:w-[36rem] md:h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 md:gap-6">
           <div className="max-w-2xl">
             <Reveal>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#10B981]/8 text-[#10B981] text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-[#10B981]/8 text-[#10B981] text-[11px] font-semibold tracking-wider uppercase">
                 <span className="w-1 h-1 rounded-full bg-[#10B981]" />
                 Featured Projects
               </span>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="mt-5 text-4xl md:text-5xl font-bold leading-[1.1] text-[#0F172A]">
+              <h2 className="mt-4 md:mt-5 text-fluid-3xl md:text-fluid-4xl font-semibold leading-[1.08] text-[#0F172A]">
                 Work that{' '}
                 <span className="text-gradient-royal">speaks for itself.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="mt-5 text-base md:text-lg text-[#475569] leading-relaxed">
+              <p className="mt-4 md:mt-5 text-fluid-base md:text-fluid-lg text-[#475569] leading-relaxed">
                 A selection of recent projects across our divisions — each one a testament to
                 craft, scale, and long-term thinking.
               </p>
@@ -90,7 +90,7 @@ export default function Projects() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
+                  className={`px-3.5 md:px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
                     filter === f
                       ? 'bg-gradient-to-r from-[#2563EB] to-[#1E40AF] text-white shadow-premium'
                       : 'bg-[#F8FAFC] text-[#475569] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:text-[#0F172A]'
@@ -106,7 +106,7 @@ export default function Projects() {
         {/* Projects grid */}
         <motion.div
           layout
-          className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-[18rem] lg:auto-rows-[20rem]"
+          className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[16rem] md:auto-rows-[18rem] lg:auto-rows-[20rem]"
         >
           <AnimatePresence>
             {visible.map((p, i) => (
@@ -117,8 +117,8 @@ export default function Projects() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className={`group relative overflow-hidden rounded-3xl shadow-premium hover:shadow-premium-lg ${p.span}`}
+                transition={{ duration: 0.55, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className={`group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-premium hover:shadow-premium-lg ${p.span}`}
               >
                 {/* Image */}
                 <div className="img-zoom absolute inset-0">
@@ -130,8 +130,8 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/0 via-transparent to-[#10B981]/0 group-hover:from-[#2563EB]/20 group-hover:to-[#10B981]/20 transition-all duration-500" />
 
                 {/* Content */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
-                  <div className="flex items-center gap-2 mb-2">
+                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end text-white">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span className="px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-md text-[10px] font-semibold uppercase tracking-wider">
                       {p.category}
                     </span>
@@ -140,13 +140,13 @@ export default function Projects() {
                       {p.location}
                     </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+                  <h3 className="text-lg md:text-2xl font-semibold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     {p.title}
                   </h3>
                   <p className="mt-1 text-xs md:text-sm text-white/80 max-w-md leading-relaxed">
                     {p.desc}
                   </p>
-                  <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-500">
+                  <div className="mt-2 md:mt-3 inline-flex items-center gap-1.5 text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-500">
                     View Case Study
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
