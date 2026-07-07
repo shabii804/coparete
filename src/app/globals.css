@@ -176,25 +176,6 @@
   .text-fluid-4xl { font-size: var(--text-4xl); }
   .text-fluid-5xl { font-size: var(--text-5xl); }
 
-  /* Consistent container — narrower, more centered, more side padding */
-  .container-premium {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 72rem; /* 1152px — narrower for tighter centered look */
-    padding-left: 1.5rem; /* 24px mobile */
-    padding-right: 1.5rem;
-  }
-  @media (min-width: 768px) {
-    .container-premium { padding-left: 3rem; padding-right: 3rem; }
-  }
-  @media (min-width: 1024px) {
-    .container-premium { padding-left: 4rem; padding-right: 4rem; }
-  }
-  @media (min-width: 1280px) {
-    .container-premium { padding-left: 5rem; padding-right: 5rem; }
-  }
-
   /* Focus visible for accessibility */
   :focus-visible {
     outline: 2px solid #2563EB;
@@ -549,6 +530,96 @@
   transition: opacity 0.4s ease;
 }
 .glow-ring:hover::before { opacity: 0.7; }
+
+/* ===== Modern responsive helpers ===== */
+
+/* Modern gradient text — animated */
+.text-gradient-animated {
+  background: linear-gradient(90deg, #2563EB, #10B981, #F59E0B, #2563EB);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-x 6s linear infinite;
+}
+
+/* Premium card hover — modern lift + glow */
+.card-modern {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  will-change: transform;
+}
+.card-modern:hover {
+  transform: translateY(-6px);
+}
+
+/* Touch-friendly tap target (min 44px) */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Modern section transition divider */
+.section-divider-modern {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.15), rgba(16, 185, 129, 0.15), transparent);
+}
+
+/* Hide scrollbar but keep scroll */
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll::-webkit-scrollbar { display: none; }
+
+/* Responsive container — tighter on mobile */
+.container-premium {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 72rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 640px) {
+  .container-premium { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 768px) {
+  .container-premium { padding-left: 2rem; padding-right: 2rem; }
+}
+@media (min-width: 1024px) {
+  .container-premium { padding-left: 3rem; padding-right: 3rem; }
+}
+@media (min-width: 1280px) {
+  .container-premium { padding-left: 4rem; padding-right: 4rem; }
+}
+
+/* Modern glass card — premium */
+.glass-card-modern {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+}
+
+/* Animated underline on hover */
+.link-underline-modern {
+  position: relative;
+}
+.link-underline-modern::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, #2563EB, #10B981);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline-modern:hover::after { transform: scaleX(1); }
 
 /* ===== Premium hero utilities ===== */
 

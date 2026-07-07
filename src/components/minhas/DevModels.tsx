@@ -151,13 +151,13 @@ export default function DevModels() {
             </div>
           </Reveal>
 
-          {/* Desktop horizontal timeline */}
-          <div className="hidden lg:block relative">
+          {/* Desktop/tablet horizontal timeline */}
+          <div className="hidden md:block relative">
             {/* Background line */}
-            <div className="absolute top-12 left-0 right-0 h-[2px] bg-[#E2E8F0]" />
+            <div className="absolute top-10 lg:top-12 left-0 right-0 h-[2px] bg-[#E2E8F0]" />
             {/* Animated progress line with glow */}
             <motion.div
-              className="absolute top-12 left-0 right-0 h-[2px] origin-left"
+              className="absolute top-10 lg:top-12 left-0 right-0 h-[2px] origin-left"
               style={{
                 scaleX: lineScale,
                 background: 'linear-gradient(90deg, #2563EB, #10B981, #F59E0B)',
@@ -165,7 +165,7 @@ export default function DevModels() {
               }}
             />
 
-            <StaggerGroup className="grid grid-cols-6 gap-3" stagger={0.1}>
+            <StaggerGroup className="grid grid-cols-6 gap-2 lg:gap-3" stagger={0.1}>
               {PROCESS_STEPS.map((step, i) => {
                 const Icon = step.icon;
                 return (
@@ -176,7 +176,7 @@ export default function DevModels() {
                       className="group relative text-center"
                     >
                       {/* Step circle with icon */}
-                      <div className="relative w-24 h-24 mx-auto mb-3">
+                      <div className="relative w-20 h-20 lg:w-24 lg:h-24 mx-auto mb-2.5 lg:mb-3">
                         {/* Glow ring on hover */}
                         <div
                           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500"
@@ -194,7 +194,7 @@ export default function DevModels() {
                             className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                             style={{ background: `linear-gradient(135deg, ${step.color}, ${step.color}cc)`, boxShadow: `0 12px 32px ${step.color}40` }}
                           />
-                          <Icon className="relative w-7 h-7 transition-colors duration-500 group-hover:text-white" style={{ color: step.color }} />
+                          <Icon className="relative w-6 h-6 lg:w-7 lg:h-7 transition-colors duration-500 group-hover:text-white" style={{ color: step.color }} />
                           {/* Step number badge */}
                           <span
                             className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white text-[#0F172A] text-[11px] font-bold inline-flex items-center justify-center shadow-premium border border-[#E2E8F0] group-hover:scale-110 transition-transform"
@@ -223,8 +223,8 @@ export default function DevModels() {
             </StaggerGroup>
           </div>
 
-          {/* Mobile/Tablet vertical timeline */}
-          <div className="lg:hidden relative pl-12">
+          {/* Mobile vertical timeline */}
+          <div className="md:hidden relative pl-12">
             {/* Vertical line */}
             <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-[#E2E8F0]" />
             <motion.div

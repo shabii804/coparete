@@ -36,23 +36,23 @@ export default function Industries() {
 
       <div className="relative">
         {/* Colorful marquee at top — colorful industry logos */}
-        <div className="marquee-mask mb-10 md:mb-12">
-          <div className="flex w-max animate-marquee gap-3 px-4">
+        <div className="marquee-mask mb-8 md:mb-10">
+          <div className="flex w-max animate-marquee gap-2 sm:gap-2.5 md:gap-3 px-4">
             {MARQUEE_ITEMS.map((ind, i) => {
               const Icon = ind.icon;
               return (
                 <div
                   key={`m-${i}`}
-                  className="group flex items-center gap-2.5 px-4 py-3 rounded-2xl border flex-shrink-0 transition-all hover:scale-105"
+                  className="group flex items-center gap-2 px-3 sm:px-3.5 md:px-4 py-2.5 md:py-3 rounded-xl md:rounded-2xl border flex-shrink-0 transition-all hover:scale-105"
                   style={{ background: ind.bg, borderColor: `${ind.color}30` }}
                 >
                   <div
-                    className="w-9 h-9 rounded-xl inline-flex items-center justify-center transition-transform group-hover:rotate-6"
+                    className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg md:rounded-xl inline-flex items-center justify-center transition-transform group-hover:rotate-6"
                     style={{ background: `linear-gradient(135deg, ${ind.color}, ${ind.color}cc)`, boxShadow: `0 4px 12px ${ind.color}40` }}
                   >
-                    <Icon className="w-5 h-5 text-white" />
+                    <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 text-white" />
                   </div>
-                  <span className="text-sm font-bold whitespace-nowrap" style={{ color: ind.color, fontFamily: 'var(--font-display), sans-serif' }}>
+                  <span className="text-xs sm:text-sm md:text-sm font-bold whitespace-nowrap" style={{ color: ind.color, fontFamily: 'var(--font-display), sans-serif' }}>
                     {ind.name}
                   </span>
                 </div>

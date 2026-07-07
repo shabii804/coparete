@@ -198,7 +198,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             eyebrowColor="gold"
             title={<>Products that <span className="text-gradient-royal">power businesses.</span></>}
           />
-          <StaggerGroup className="mt-6 grid md:grid-cols-3 gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" stagger={0.08}>
             {PROJECTS_PREVIEW.map((p) => (
               <StaggerItem key={p.title}>
                 <div className="group relative overflow-hidden rounded-2xl shadow-premium hover:shadow-premium-lg aspect-[4/3]">
@@ -244,7 +244,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
               </button>
             </Reveal>
           </div>
-          <StaggerGroup className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.08}>
+          <StaggerGroup className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" stagger={0.08}>
             {TEAM_PREVIEW.map((m) => (
               <StaggerItem key={m.name}>
                 <div className="group relative rounded-2xl overflow-hidden bg-white border border-[#E2E8F0] hover:shadow-premium-lg transition-all">

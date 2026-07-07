@@ -19,7 +19,7 @@ export default function Hero({ visible }: { visible: boolean }) {
   const overlayOpacity = useTransform(scrollY, [0, 600], [1, 0.5]);
 
   return (
-    <section id="home" className="relative min-h-[88vh] lg:min-h-[92vh] w-full overflow-hidden bg-[#F8FAFC]">
+    <section id="home" className="relative min-h-[85vh] lg:min-h-[92vh] w-full overflow-hidden bg-[#F8FAFC]">
       {/* ===== Background: corporate skyscraper image ===== */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <div className="absolute inset-0 scale-105">
@@ -84,10 +84,10 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* ===== Hero content ===== */}
       <motion.div
-        className="relative z-10 container-premium min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-center pt-28 pb-12"
+        className="relative z-10 container-premium min-h-[85vh] lg:min-h-[92vh] flex flex-col justify-center pt-24 pb-10 lg:pt-28 lg:pb-12"
         style={{ y: contentY }}
       >
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-16 items-center">
           {/* ===== LEFT COLUMN ===== */}
           <div className="max-w-2xl">
             {/* Eyebrow badge */}
