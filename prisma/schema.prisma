@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,8 +14,206 @@ model User {
   id        String   @id @default(cuid())
   email     String   @unique
   name      String?
+  password  String?
+  role      String   @default("user") // "user" | "admin"
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// ===== JOBS & CAREERS =====
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  type        String   // "Full-time" | "Part-time" | "Internship" | "Contract"
+  department  String
+  location    String
+  description String
+  requirements String  // JSON array as string
+  salary      String?
+  postedAt    DateTime @default(now())
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id        String   @id @default(cuid())
+  jobId     String
+  name      String
+  email     String
+  phone     String?
+  resume    String?
+  coverLetter String?
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+  job       Job      @relation(fields: [jobId], references: [id])
+}
+
+// ===== LEADS =====
+model QuoteRequest {
+  id        String   @id @default(cuid())
+  service   String
+  budget    String
+  timeline  String
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  details   String?
+  file      String?
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+// ===== CMS: SERVICES =====
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String   // Lucide icon name
+  color       String   // hex color
+  gradient    String   // CSS gradient
+  glow        String   // glow color
+  features    String   // JSON array as string
+  benefits    String   // JSON array as string
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: PRODUCTS =====
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  tagline     String
+  description String
+  image       String
+  price       String
+  badge       String?
+  icon        String
+  color       String
+  gradient    String
+  glow        String
+  features    String   // JSON array
+  modules     String   // JSON array
+  benefits    String   // JSON array
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: INDUSTRIES =====
+model Industry {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  color       String
+  bg          String   // background color
+  challenges  String   // JSON array
+  solutions   String   // JSON array
+  story       String
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: TEAM =====
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  bio         String
+  image       String
+  accent      String   // hex color
+  experience  String
+  skills      String   // JSON array
+  linkedin    String?
+  twitter     String?
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: BLOG =====
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  excerpt     String
+  content     String
+  image       String
+  category    String
+  author      String?
+  readTime    String
+  published   Boolean  @default(false)
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: TESTIMONIALS =====
+model Testimonial {
+  id          String   @id @default(cuid())
+  quote       String
+  name        String
+  title       String   // job title / company
+  avatar      String
+  rating      Int      @default(5)
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: DEV MODELS =====
+model DevModel {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  color       String
+  gradient    String
+  glow        String
+  steps       String   // JSON array
+  best        String
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== CMS: TECH STACK =====
+model TechItem {
+  id          String   @id @default(cuid())
+  name        String
+  icon        String
+  color       String
+  sortOrder   Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+// ===== CMS: SITE SETTINGS =====
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
 }
 
 model Post {

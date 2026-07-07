@@ -324,7 +324,16 @@ export default function QuoteModal({ open, onClose }: { open: boolean; onClose: 
                 </button>
               ) : (
                 <button
-                  onClick={handleClose}
+                  onClick={async () => {
+                    try {
+                      await fetch('/api/quote-requests', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                      });
+                    } catch (e) { console.error(e); }
+                    handleClose();
+                  }}
                   className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#10B981] to-[#059669] shadow-glow-emerald hover:-translate-y-0.5 transition-all"
                 >
                   <Sparkles className="w-4 h-4" />

@@ -99,18 +99,45 @@ export default function ContactSection() {
 
           {/* Right — form */}
           <Reveal delay={0.15}>
-            <form onSubmit={(e) => e.preventDefault()} className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] shadow-premium">
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target as HTMLFormElement);
+              const data = Object.fromEntries(formData);
+              try {
+                await fetch('/api/contact-messages', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data),
+                });
+                (e.target as HTMLFormElement).reset();
+                alert('Message sent! We\'ll get back to you soon.');
+              } catch (err) {
+                console.error(err);
+              }
+            }} className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] shadow-premium">
               <div className="grid sm:grid-cols-2 gap-3">
-                <Field label="Full Name" placeholder="Your name" />
-                <Field label="Email" placeholder="you@company.com" type="email" />
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#0F172A] uppercase tracking-wider mb-1.5">Full Name</label>
+                  <input name="name" required placeholder="Your name" className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#0F172A] uppercase tracking-wider mb-1.5">Email</label>
+                  <input name="email" type="email" required placeholder="you@company.com" className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all" />
+                </div>
               </div>
               <div className="mt-3 grid sm:grid-cols-2 gap-3">
-                <Field label="Company" placeholder="Company name" />
-                <Field label="Phone" placeholder="+1 (555) 000-0000" />
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#0F172A] uppercase tracking-wider mb-1.5">Company</label>
+                  <input name="company" placeholder="Company name" className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#0F172A] uppercase tracking-wider mb-1.5">Phone</label>
+                  <input name="phone" placeholder="+1 (555) 000-0000" className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all" />
+                </div>
               </div>
               <div className="mt-3">
                 <label className="block text-[10px] font-semibold text-[#0F172A] uppercase tracking-wider mb-1.5">Message</label>
-                <textarea rows={3} placeholder="Tell us about your project..."
+                <textarea name="message" rows={3} required placeholder="Tell us about your project..."
                   className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all resize-none" />
               </div>
               <div className="mt-4 flex items-center justify-between gap-3">

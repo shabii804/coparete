@@ -14,7 +14,7 @@ const NAV_LINKS: { label: string; page: PageId }[] = [
   { label: 'Industries', page: 'industries' },
   { label: 'Portfolio', page: 'portfolio' },
   { label: 'Team', page: 'team' },
-  { label: 'Blog', page: 'blog' },
+  { label: 'Careers', page: 'careers' },
   { label: 'Contact', page: 'contact' },
 ];
 

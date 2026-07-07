@@ -13,6 +13,8 @@ import PortfolioPage from '@/components/minhas/pages/PortfolioPage';
 import TeamPage from '@/components/minhas/pages/TeamPage';
 import BlogPage from '@/components/minhas/pages/BlogPage';
 import ContactPage from '@/components/minhas/pages/ContactPage';
+import CareersPage from '@/components/minhas/pages/CareersPage';
+import AdminPage from '@/components/minhas/pages/AdminPage';
 import Footer from '@/components/minhas/Footer';
 import QuoteModal from '@/components/minhas/QuoteModal';
 import WhatsAppButton from '@/components/minhas/WhatsAppButton';
@@ -70,6 +72,8 @@ export default function Home() {
           {page === 'team' && <TeamPage />}
           {page === 'blog' && <BlogPage />}
           {page === 'contact' && <ContactPage />}
+          {page === 'careers' && <CareersPage />}
+          {page === 'admin' && <AdminPage />}
         </main>
         <Footer />
       </div>

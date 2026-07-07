@@ -41,7 +41,9 @@ const FOOTER_COLS: { title: string; links: { label: string; page?: PageId }[] }[
       { label: 'Portfolio', page: 'portfolio' },
       { label: 'Industries', page: 'industries' },
       { label: 'Insights', page: 'blog' },
+      { label: 'Careers', page: 'careers' },
       { label: 'Get a Quote', page: 'contact' },
+      { label: 'Admin Panel', page: 'admin' },
     ],
   },
 ];

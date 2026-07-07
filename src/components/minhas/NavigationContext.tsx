@@ -10,7 +10,9 @@ export type PageId =
   | 'portfolio'
   | 'team'
   | 'blog'
-  | 'contact';
+  | 'contact'
+  | 'careers'
+  | 'admin';
 
 interface NavContextValue {
   navigate: (page: PageId) => void;
