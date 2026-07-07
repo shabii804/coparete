@@ -15,14 +15,32 @@ import {
   Target, Eye, Heart, Zap, Shield, Users, Code2, Star, Quote,
 } from 'lucide-react';
 
-// Tech company services
+// Tech company services — with premium gradient icons
 const SERVICES_PREVIEW = [
-  { icon: Cpu, title: 'ERP Systems', desc: 'Unified enterprise platforms for finance, HR, inventory, and operations.', color: '#2563EB' },
-  { icon: Brain, title: 'AI & Machine Learning', desc: 'LLM integrations, computer vision, and predictive analytics.', color: '#10B981' },
-  { icon: ShoppingCart, title: 'POS Systems', desc: 'Cloud POS for retail, restaurants, and omnichannel commerce.', color: '#F59E0B' },
-  { icon: GraduationCap, title: 'School Management', desc: 'LMS, admissions, attendance, and parent portals.', color: '#2563EB' },
-  { icon: Monitor, title: 'Desktop Applications', desc: 'Cross-platform desktop apps built with Electron & Tauri.', color: '#10B981' },
-  { icon: Database, title: 'Custom Software', desc: 'Tailored web, mobile, and backend solutions at scale.', color: '#F59E0B' },
+  {
+    icon: Cpu, title: 'ERP Systems', desc: 'Unified enterprise platforms for finance, HR, inventory, and operations.',
+    gradient: 'linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%)', glow: 'rgba(37, 99, 235, 0.35)',
+  },
+  {
+    icon: Brain, title: 'AI & Machine Learning', desc: 'LLM integrations, computer vision, and predictive analytics.',
+    gradient: 'linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%)', glow: 'rgba(16, 185, 129, 0.35)',
+  },
+  {
+    icon: ShoppingCart, title: 'POS Systems', desc: 'Cloud POS for retail, restaurants, and omnichannel commerce.',
+    gradient: 'linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%)', glow: 'rgba(245, 158, 11, 0.35)',
+  },
+  {
+    icon: GraduationCap, title: 'School Management', desc: 'LMS, admissions, attendance, and parent portals.',
+    gradient: 'linear-gradient(135deg, #4F46E5 0%, #6366F1 50%, #818CF8 100%)', glow: 'rgba(99, 102, 241, 0.35)',
+  },
+  {
+    icon: Monitor, title: 'Desktop Applications', desc: 'Cross-platform desktop apps built with Electron & Tauri.',
+    gradient: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 50%, #5EEAD4 100%)', glow: 'rgba(20, 184, 166, 0.35)',
+  },
+  {
+    icon: Database, title: 'Custom Software', desc: 'Tailored web, mobile, and backend solutions at scale.',
+    gradient: 'linear-gradient(135deg, #BE185D 0%, #EC4899 50%, #F472B6 100%)', glow: 'rgba(236, 72, 153, 0.35)',
+  },
 ];
 
 const PILLARS = [
@@ -88,7 +106,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
                 </motion.div>
               </div>
             </Reveal>
-            <div>
+            <div className="text-center lg:text-left">
               <SectionHeading
                 align="left"
                 eyebrow="About Minhas"
@@ -102,7 +120,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2 justify-center lg:justify-start">
                   {CAPABILITIES.map((c) => {
                     const Icon = c.icon;
                     return (
@@ -129,10 +147,12 @@ export default function HomePage({ visible }: { visible: boolean }) {
                 })}
               </StaggerGroup>
               <Reveal delay={0.3}>
-                <button onClick={() => navigate('about')} className="group mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
-                  Learn More
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
+                <div className="mt-5 flex justify-center lg:justify-start">
+                  <button onClick={() => navigate('about')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
+                    Learn More
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </button>
+                </div>
               </Reveal>
             </div>
           </div>
@@ -156,16 +176,35 @@ export default function HomePage({ visible }: { visible: boolean }) {
               const Icon = s.icon;
               return (
                 <StaggerItem key={s.title}>
-                  <div className="group h-full p-5 rounded-2xl bg-white border border-[#E2E8F0] hover-lift hover:shadow-premium transition-all">
-                    <div className="relative w-12 h-12 rounded-xl inline-flex items-center justify-center mb-4 transition-all duration-500"
-                      style={{ background: `linear-gradient(135deg, ${s.color}15, ${s.color}25)` }}>
-                      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{ background: `linear-gradient(135deg, ${s.color}, ${s.color}cc)` }} />
-                      <Icon className="relative w-6 h-6 transition-colors group-hover:text-white" style={{ color: s.color }} />
+                  <motion.div
+                    whileHover={{ y: -6 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    className="group h-full p-5 rounded-2xl bg-white border border-[#E2E8F0] hover:border-transparent hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-all overflow-hidden relative"
+                  >
+                    {/* Glow on hover */}
+                    <div
+                      className="absolute -top-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
+                      style={{ background: `radial-gradient(circle, ${s.glow}, transparent 70%)` }}
+                    />
+                    <div className="relative">
+                      {/* Premium gradient icon */}
+                      <div
+                        className="relative w-14 h-14 rounded-2xl inline-flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500"
+                        style={{ background: s.gradient, boxShadow: `0 8px 20px ${s.glow}` }}
+                      >
+                        <Icon className="w-7 h-7 text-white" strokeWidth={2} />
+                        {/* Shine */}
+                        <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                          <div
+                            className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] opacity-30 group-hover:opacity-50 transition-opacity"
+                            style={{ background: 'linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)' }}
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-base font-bold text-[#0F172A] mb-1.5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{s.title}</h3>
+                      <p className="text-xs text-[#475569] leading-relaxed">{s.desc}</p>
                     </div>
-                    <h3 className="text-base font-bold text-[#0F172A] mb-1.5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{s.title}</h3>
-                    <p className="text-xs text-[#475569] leading-relaxed">{s.desc}</p>
-                  </div>
+                  </motion.div>
                 </StaggerItem>
               );
             })}

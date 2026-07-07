@@ -84,12 +84,12 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* ===== Hero content ===== */}
       <motion.div
-        className="relative z-10 container-premium min-h-[85vh] lg:min-h-[92vh] flex flex-col justify-center pt-24 pb-10 lg:pt-28 lg:pb-12"
+        className="relative z-10 container-premium min-h-[85vh] lg:min-h-[92vh] flex flex-col justify-center pt-24 pb-10 lg:pt-28 lg:pb-12 text-center lg:text-left"
         style={{ y: contentY }}
       >
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-16 items-center">
           {/* ===== LEFT COLUMN ===== */}
-          <div className="max-w-2xl">
+          <div className="w-full max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start">
             {/* Eyebrow badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -158,7 +158,7 @@ export default function Hero({ visible }: { visible: boolean }) {
               initial={{ opacity: 0, y: 24 }}
               animate={visible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.0, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+              className="mt-8 lg:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
             >
               <button
                 onClick={openQuote}
@@ -184,12 +184,12 @@ export default function Hero({ visible }: { visible: boolean }) {
               initial={{ opacity: 0, y: 20 }}
               animate={visible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8"
+              className="mt-8 w-full"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#94A3B8] mb-3">
                 Trusted by Industry Leaders
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 {TRUST_BADGES.map((b, i) => {
                   const Icon = b.icon;
                   return (
