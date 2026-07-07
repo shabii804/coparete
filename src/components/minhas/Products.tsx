@@ -40,7 +40,7 @@ const PRODUCTS = [
 
 export default function Products() {
   return (
-    <section id="products" className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section id="products" className="relative py-12 md:py-16 bg-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
 
@@ -52,7 +52,7 @@ export default function Products() {
           description="A suite of enterprise-grade products built and battle-tested across our divisions — ready to deploy in your business today."
         />
 
-        <StaggerGroup className="mt-12 md:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.1}>
+        <StaggerGroup className="mt-6 md:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.1}>
           {PRODUCTS.map((p) => (
             <StaggerItem key={p.name}>
               <div className="group h-full flex flex-col rounded-3xl bg-white border border-[#E2E8F0] hover:border-transparent hover:shadow-premium-lg overflow-hidden transition-all duration-500">

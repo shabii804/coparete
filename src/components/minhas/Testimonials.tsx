@@ -49,7 +49,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="relative py-20 md:py-32 bg-[#F8FAFC] overflow-hidden">
+    <section id="testimonials" className="relative py-12 md:py-16 bg-[#F8FAFC] overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] md:w-[50rem] md:h-[50rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #D4AF37, transparent 70%)' }} />
 
@@ -70,7 +70,7 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonial card */}
-        <div className="mt-10 md:mt-14 max-w-4xl mx-auto">
+        <div className="mt-7 md:mt-9 max-w-4xl mx-auto">
           <Reveal y={30}>
             <div className="relative p-6 md:p-12 rounded-2xl md:rounded-3xl bg-white border border-[#E2E8F0] shadow-premium-lg overflow-hidden">
               {/* Quote icon */}

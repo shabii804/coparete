@@ -51,7 +51,7 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-20 md:py-32 bg-[#F8FAFC] overflow-hidden">
+    <section id="services" className="relative py-12 md:py-16 bg-[#F8FAFC] overflow-hidden">
       {/* Decorative pattern */}
       <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 -left-32 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
@@ -81,7 +81,7 @@ export default function Services() {
         </div>
 
         {/* Service grid */}
-        <StaggerGroup className="mt-12 md:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.09}>
+        <StaggerGroup className="mt-6 md:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.09}>
           {SERVICES.map((s) => {
             const Icon = s.icon;
             return (

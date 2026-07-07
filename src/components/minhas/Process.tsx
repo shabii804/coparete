@@ -24,7 +24,7 @@ export default function Process() {
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
+    <section className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
       {/* Light decorative */}
       <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
       <div className="absolute top-0 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
@@ -41,9 +41,9 @@ export default function Process() {
         />
 
         {/* Timeline */}
-        <div ref={ref} className="mt-14 md:mt-20 relative">
+        <div ref={ref} className="mt-9 md:mt-12 relative">
           {/* Animated progress line (desktop) */}
-          <div className="hidden lg:block absolute top-12 left-0 right-0 h-[2px] bg-[#E2E8F0]">
+          <div className="hidden lg:block absolute top-10 left-0 right-0 h-[2px] bg-[#E2E8F0]">
             <motion.div
               className="h-full origin-left"
               style={{
@@ -60,7 +60,7 @@ export default function Process() {
                 <Reveal key={step.title} delay={i * 0.1}>
                   <div className="group relative">
                     {/* Step number circle */}
-                    <div className="relative z-10 mx-auto lg:mx-0 w-24 h-24 mb-5">
+                    <div className="relative z-10 mx-auto lg:mx-0 w-20 h-20 mb-4">
                       <motion.div
                         whileHover={{ scale: 1.05, rotate: 5 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 12 }}
@@ -70,7 +70,7 @@ export default function Process() {
                           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                           style={{ background: `linear-gradient(135deg, ${step.color}, ${step.color}88)` }}
                         />
-                        <Icon className="relative w-8 h-8 transition-colors duration-500 group-hover:text-white"
+                        <Icon className="relative w-7 h-7 transition-colors duration-500 group-hover:text-white"
                           style={{ color: step.color }} />
                         {/* Step number */}
                         <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-white text-[#0F172A] text-xs font-bold inline-flex items-center justify-center shadow-premium border border-[#E2E8F0]"

@@ -35,7 +35,7 @@ export default function TeamPage() {
       />
 
       {/* Team grid */}
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="absolute top-0 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
         <div className="container-premium">
@@ -77,7 +77,7 @@ export default function TeamPage() {
       </section>
 
       {/* Values */}
-      <section className="relative py-10 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="container-premium">
           <Reveal>
             <div className="p-8 md:p-10 rounded-3xl bg-white border border-[#E2E8F0]">
@@ -104,7 +104,7 @@ export default function TeamPage() {
       </section>
 
       {/* Careers teaser */}
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="relative mx-auto max-w-4xl px-4 md:px-8 text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#10B981]/8 text-[#10B981] text-[11px] font-semibold tracking-wider uppercase mb-5">

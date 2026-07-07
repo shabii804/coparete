@@ -35,14 +35,14 @@ export default function SectionHeading({
           {eyebrow}
         </span>
       </Reveal>
-      <Reveal delay={0.08}>
-        <h2 className="mt-3 text-fluid-2xl md:text-fluid-3xl font-bold leading-[1.12] text-[#0F172A]">
+      <Reveal delay={0.06}>
+        <h2 className="mt-2.5 text-fluid-2xl md:text-fluid-3xl font-bold leading-[1.14] text-[#0F172A]">
           {title}
         </h2>
       </Reveal>
       {description && (
-        <Reveal delay={0.15}>
-          <p className={`mt-3 text-fluid-sm md:text-fluid-base text-[#475569] leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
+        <Reveal delay={0.12}>
+          <p className={`mt-2.5 text-fluid-sm text-[#475569] leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
             {description}
           </p>
         </Reveal>

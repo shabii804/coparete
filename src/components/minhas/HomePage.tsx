@@ -72,11 +72,11 @@ export default function HomePage({ visible }: { visible: boolean }) {
       <TrustedClients />
 
       {/* 3. About Preview */}
-      <section id="about" className="relative py-14 md:py-20 bg-white overflow-hidden">
+      <section id="about" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
         <div className="container-premium relative">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
             <Reveal y={30} blur>
               <div className="relative">
                 <div className="img-zoom relative rounded-3xl overflow-hidden shadow-premium-lg aspect-[4/3]">
@@ -103,7 +103,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   by an unwavering commitment to quality and a deep sense of responsibility to the communities we serve.
                 </p>
               </Reveal>
-              <StaggerGroup className="mt-5 grid sm:grid-cols-3 gap-3" stagger={0.08}>
+              <StaggerGroup className="mt-3 grid sm:grid-cols-3 gap-3" stagger={0.08}>
                 {PILLARS.map((p) => {
                   const Icon = p.icon;
                   return (
@@ -118,7 +118,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
                 })}
               </StaggerGroup>
               <Reveal delay={0.3}>
-                <button onClick={() => navigate('about')} className="group mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
+                <button onClick={() => navigate('about')} className="group mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#2563EB] bg-[#2563EB]/8 hover:bg-[#2563EB] hover:text-white transition-all">
                   Learn More
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
@@ -129,7 +129,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 4. Services Preview */}
-      <section id="services" className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
+      <section id="services" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
           <SectionHeading
@@ -157,7 +157,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             })}
           </StaggerGroup>
           <Reveal delay={0.2}>
-            <div className="mt-7 text-center">
+            <div className="mt-5 text-center">
               <button onClick={() => navigate('services')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-white border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all">
                 View All Services
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -168,7 +168,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 5. Why Choose Us */}
-      <section className="relative py-14 md:py-20 bg-white overflow-hidden">
+      <section className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-1/4 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
         <div className="container-premium relative">
@@ -196,7 +196,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 6. Impact Stats — fixed to prevent overflow */}
-      <section className="relative py-14 md:py-20 overflow-hidden bg-[#0F172A]">
+      <section className="relative py-10 md:py-14 overflow-hidden bg-[#0F172A]">
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
           <div className="absolute bottom-0 right-1/4 w-[28rem] h-[28rem] rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
@@ -231,7 +231,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 7. Featured Projects Preview */}
-      <section id="projects" className="relative py-14 md:py-20 bg-white overflow-hidden">
+      <section id="projects" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="container-premium relative">
           <SectionHeading
             eyebrow="Featured Projects"
@@ -255,7 +255,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             ))}
           </StaggerGroup>
           <Reveal delay={0.2}>
-            <div className="mt-7 text-center">
+            <div className="mt-5 text-center">
               <button onClick={() => navigate('portfolio')} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-[#0F172A] bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#2563EB]/40 hover:shadow-premium transition-all">
                 View Full Portfolio
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -266,7 +266,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 8. Team Preview — NEW */}
-      <section className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -303,7 +303,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
       </section>
 
       {/* 9. Testimonial highlight */}
-      <section className="relative py-14 md:py-20 bg-white overflow-hidden">
+      <section className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #F59E0B, transparent 70%)' }} />
         <div className="container-premium relative max-w-3xl text-center">
@@ -327,7 +327,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
             </div>
           </Reveal>
           <Reveal delay={0.22}>
-            <div className="mt-5 flex justify-center gap-1">
+            <div className="mt-3 flex justify-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />)}
             </div>
           </Reveal>

@@ -45,7 +45,7 @@ export default function ContactPage() {
         subtitle="Reach out through any channel below — a member of our team will respond within one business day."
       />
 
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="absolute top-1/4 left-0 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
         <div className="container-premium">

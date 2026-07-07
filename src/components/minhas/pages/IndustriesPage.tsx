@@ -102,7 +102,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="relative py-10 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium space-y-4">
           {INDUSTRIES.map((ind, i) => {

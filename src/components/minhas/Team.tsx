@@ -44,7 +44,7 @@ const VALUES = [
 
 export default function Team() {
   return (
-    <section id="team" className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section id="team" className="relative py-12 md:py-16 bg-white overflow-hidden">
       {/* Decorative */}
       <div className="absolute top-0 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
@@ -87,7 +87,7 @@ export default function Team() {
         </div>
 
         {/* Team grid */}
-        <StaggerGroup className="mt-12 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" stagger={0.1}>
+        <StaggerGroup className="mt-6 md:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6" stagger={0.1}>
           {TEAM.map((m) => (
             <StaggerItem key={m.name}>
               <div className="group relative rounded-3xl overflow-hidden bg-[#F8FAFC] border border-[#E2E8F0] hover:border-transparent hover:shadow-premium-lg transition-all duration-500">

@@ -18,8 +18,8 @@ const CLIENTS = [
 export default function TrustedClients() {
   const items = [...CLIENTS, ...CLIENTS];
   return (
-    <section className="relative py-8 md:py-10 bg-white border-y border-[#E2E8F0] overflow-hidden">
-      <div className="container-premium mb-4 md:mb-5 text-center">
+    <section className="relative py-6 md:py-8 bg-white border-y border-[#E2E8F0] overflow-hidden">
+      <div className="container-premium mb-3 md:mb-4 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}

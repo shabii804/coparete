@@ -20,21 +20,21 @@ const EYEBROW_STYLES = {
 export default function PageHeader({ eyebrow, eyebrowColor = 'blue', title, subtitle }: PageHeaderProps) {
   const { navigate } = useNav();
   return (
-    <section className="relative pt-24 md:pt-28 pb-8 md:pb-10 overflow-hidden bg-gradient-to-b from-[#F8FAFC] to-white">
+    <section className="relative pt-20 md:pt-24 pb-6 md:pb-8 overflow-hidden bg-gradient-to-b from-[#F8FAFC] to-white">
       {/* Decorative blobs */}
-      <div className="absolute top-10 -left-20 w-64 h-64 rounded-full opacity-[0.08] blur-3xl pointer-events-none"
+      <div className="absolute top-8 -left-20 w-56 h-56 rounded-full opacity-[0.08] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
-      <div className="absolute top-20 -right-20 w-72 h-72 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
+      <div className="absolute top-16 -right-20 w-64 h-64 rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none mask-fade-b" />
 
       <div className="container-premium relative">
-        {/* Back button — compact, inline */}
+        {/* Back button — compact inline */}
         <motion.button
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => navigate('home')}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] shadow-soft text-xs font-medium text-[#475569] hover:text-[#0F172A] hover:border-[#2563EB]/30 transition-all mb-4"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] shadow-soft text-xs font-medium text-[#475569] hover:text-[#0F172A] hover:border-[#2563EB]/30 transition-all mb-3"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           Home
@@ -47,15 +47,15 @@ export default function PageHeader({ eyebrow, eyebrowColor = 'blue', title, subt
           </span>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <h1 className="mt-3 text-fluid-3xl md:text-fluid-4xl font-bold text-[#0F172A] leading-[1.1] max-w-3xl">
+        <Reveal delay={0.06}>
+          <h1 className="mt-2.5 text-fluid-3xl md:text-fluid-4xl font-bold text-[#0F172A] leading-[1.1] max-w-3xl">
             {title}
           </h1>
         </Reveal>
 
         {subtitle && (
-          <Reveal delay={0.15}>
-            <p className="mt-3 text-fluid-sm md:text-fluid-base text-[#475569] leading-relaxed max-w-2xl">
+          <Reveal delay={0.12}>
+            <p className="mt-2.5 text-fluid-sm text-[#475569] leading-relaxed max-w-2xl">
               {subtitle}
             </p>
           </Reveal>

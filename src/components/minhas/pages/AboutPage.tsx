@@ -56,7 +56,7 @@ export default function AboutPage() {
       />
 
       {/* Company Story */}
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
         <div className="container-premium relative">
@@ -77,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission / Vision / Values */}
-      <section className="relative py-10 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
           <SectionHeading eyebrow="What Drives Us" eyebrowColor="emerald" title={<>Mission, vision, and <span className="text-gradient-royal">values.</span></>} />
@@ -99,7 +99,7 @@ export default function AboutPage() {
       </section>
 
       {/* History Timeline */}
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="container-premium relative max-w-3xl">
           <SectionHeading eyebrow="Our Journey" eyebrowColor="gold" title={<>Milestones along the <span className="text-gradient-royal">way.</span></>} />
           <div className="mt-8 relative">
@@ -131,7 +131,7 @@ export default function AboutPage() {
       </section>
 
       {/* Achievements + Certifications */}
-      <section className="relative py-10 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="container-premium relative">
           <SectionHeading eyebrow="Recognition" title={<>Awards & <span className="text-gradient-royal">certifications.</span></>} />
           <div className="mt-8 grid md:grid-cols-2 gap-6">
@@ -183,7 +183,7 @@ export default function AboutPage() {
       <Technologies />
 
       {/* Leadership preview → link to Team */}
-      <section className="relative py-10 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="container-premium relative">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <SectionHeading align="left" eyebrow="Leadership" eyebrowColor="emerald" title={<>Meet the people behind <span className="text-gradient-royal">the enterprise.</span></>} />

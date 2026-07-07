@@ -46,7 +46,7 @@ function ImpactCounter({ value, decimals = 0, prefix = '', suffix = '' }: {
 
 export default function Impact() {
   return (
-    <section id="impact" className="relative py-20 md:py-32 overflow-hidden bg-[#0F172A]">
+    <section id="impact" className="relative py-12 md:py-16 overflow-hidden bg-[#0F172A]">
       {/* Decorative gradients */}
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[36rem] h-[36rem] md:w-[40rem] md:h-[40rem] rounded-full blur-3xl"
@@ -86,7 +86,7 @@ export default function Impact() {
         </div>
 
         {/* Impact grid */}
-        <StaggerGroup className="mt-12 md:mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5" stagger={0.1}>
+        <StaggerGroup className="mt-6 md:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5" stagger={0.1}>
           {IMPACT.map((s) => {
             const Icon = s.icon;
             return (

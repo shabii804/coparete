@@ -56,7 +56,7 @@ export default function ServicesPage() {
       />
 
       {/* Services detail */}
-      <section className="relative py-10 md:py-16 bg-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[36rem] h-[36rem] rounded-full opacity-[0.04] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
         <div className="container-premium space-y-12 md:space-y-20">

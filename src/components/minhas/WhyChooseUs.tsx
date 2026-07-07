@@ -16,7 +16,7 @@ const REASONS = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section className="relative py-12 md:py-16 bg-white overflow-hidden">
       <div className="absolute top-1/4 left-0 w-[36rem] h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
       <div className="absolute bottom-1/4 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
           description="We don't just deliver projects — we build partnerships rooted in accountability, craft, and measurable outcomes."
         />
 
-        <StaggerGroup className="mt-12 md:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.09}>
+        <StaggerGroup className="mt-6 md:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" stagger={0.09}>
           {REASONS.map((r) => {
             const Icon = r.icon;
             return (

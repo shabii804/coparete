@@ -26,7 +26,7 @@ const TECHS = [
 export default function Technologies() {
   const items = [...TECHS, ...TECHS];
   return (
-    <section className="relative py-14 md:py-20 bg-white overflow-hidden">
+    <section className="relative py-10 md:py-14 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
 
@@ -40,7 +40,7 @@ export default function Technologies() {
       </div>
 
       {/* Marquee row 1 */}
-      <div className="mt-8 md:mt-10 marquee-mask">
+      <div className="mt-6 md:mt-8 marquee-mask">
         <div className="flex w-max animate-marquee gap-2.5 md:gap-3 px-4">
           {items.map((t, i) => {
             const Icon = t.icon;
@@ -89,7 +89,7 @@ export default function Technologies() {
 
       {/* Bottom stat strip */}
       <Reveal delay={0.2}>
-        <div className="container-premium mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="container-premium mt-7 md:mt-9 grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { icon: Shield, label: 'SOC 2 Certified', value: '100%' },
             { icon: Gauge, label: 'Avg. Lighthouse Score', value: '94' },

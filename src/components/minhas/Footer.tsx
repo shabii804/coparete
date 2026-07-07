@@ -2,7 +2,7 @@
 
 import { Reveal } from './Reveal';
 import { useNav, type PageId } from './NavigationContext';
-import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone, Send, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone, Send, Sparkles, ArrowRight } from 'lucide-react';
 
 const FOOTER_COLS: { title: string; links: { label: string; page?: PageId }[] }[] = [
   {
@@ -63,17 +63,21 @@ export default function Footer() {
       <div className="absolute -bottom-32 right-1/4 w-72 h-72 md:w-80 md:h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
-      {/* Newsletter + CTA banner (compact) */}
+      {/* Modern CTA + Newsletter combined banner */}
       <div className="relative border-b border-white/10">
         <div className="container-premium py-8 md:py-10">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-5 md:gap-8 items-center">
+          <div className="grid lg:grid-cols-2 gap-5 md:gap-8 items-center">
             <Reveal>
               <div>
-                <h3 className="text-fluid-xl md:text-fluid-2xl font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-dark text-white text-[10px] font-semibold tracking-wider uppercase mb-2.5">
+                  <Sparkles className="w-3 h-3 text-[#F59E0B]" />
+                  Stay in the loop
+                </div>
+                <h3 className="text-fluid-lg md:text-fluid-2xl font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   Subscribe to our <span className="text-gradient-gold">newsletter</span>
                 </h3>
                 <p className="mt-1.5 text-xs text-white/60 max-w-md leading-relaxed">
-                  Quarterly insights on projects, trends, and the future of diversified enterprise. No spam, ever.
+                  Quarterly insights on projects, trends, and the future of diversified enterprise.
                 </p>
               </div>
             </Reveal>
@@ -95,9 +99,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main footer — compact */}
-      <div className="relative container-premium py-10 md:py-14">
-        <div className="grid lg:grid-cols-[1.5fr_repeat(4,1fr)] gap-8">
+      {/* Main footer — modern grid */}
+      <div className="relative container-premium py-10 md:py-12">
+        <div className="grid lg:grid-cols-[1.6fr_repeat(4,1fr)] gap-8">
           {/* Brand */}
           <div>
             <button onClick={() => navigate('home')} className="flex items-center gap-2.5 mb-4">
@@ -120,7 +124,7 @@ export default function Footer() {
               <div className="flex items-center gap-2"><Mail className="w-3 h-3 text-[#2563EB] flex-shrink-0" /><span>hello@minhas-enterprises.com</span></div>
             </div>
 
-            {/* Social — colorful */}
+            {/* Social — colorful with brand colors */}
             <div className="mt-4 flex gap-2">
               {SOCIAL.map((s) => {
                 const Icon = s.icon;
@@ -138,7 +142,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link columns — compact */}
+          {/* Link columns */}
           {FOOTER_COLS.map((col, i) => (
             <Reveal key={col.title} delay={0.05 * i}>
               <div>
@@ -160,18 +164,22 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* CTA strip — Get a Quote */}
+      {/* Modern CTA strip — gradient banner */}
       <div className="relative border-t border-white/10">
-        <div className="container-premium py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs text-white/60">
-            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
-            <span>Have a project in mind?</span>
+        <div className="container-premium py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl"
+            style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.15), rgba(16,185,129,0.15))' }}>
+            <div className="flex items-center gap-2.5 text-sm">
+              <Sparkles className="w-4 h-4 text-[#F59E0B]" />
+              <span className="text-white font-medium">Have a project in mind?</span>
+              <span className="text-white/60 text-xs hidden sm:inline">Let's turn your vision into impact.</span>
+            </div>
+            <button onClick={openQuote}
+              className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] transition-all hover:-translate-y-0.5">
+              Get a Free Quote
+              <ArrowRight className="w-3 h-3 text-[#2563EB] transition-transform group-hover:translate-x-0.5" />
+            </button>
           </div>
-          <button onClick={openQuote}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] transition-all hover:-translate-y-0.5">
-            Get a Free Quote
-            <ArrowUpRight className="w-3 h-3 text-[#2563EB]" />
-          </button>
         </div>
       </div>
 

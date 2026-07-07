@@ -14,13 +14,13 @@ export default function CTA({
 }: CTAProps) {
   const { navigate, openQuote } = useNav();
   return (
-    <section className="relative py-10 md:py-14 bg-white overflow-hidden">
+    <section className="relative py-8 md:py-12 bg-white overflow-hidden">
       <div className="container-premium">
-        <Reveal y={20} blur>
-          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 md:p-10 shadow-premium-lg">
-            <div className="absolute -top-32 -right-32 w-72 h-72 md:w-96 md:h-96 rounded-full opacity-30 blur-3xl"
+        <Reveal y={16} blur>
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 md:p-9 shadow-premium-lg">
+            <div className="absolute -top-32 -right-32 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-30 blur-3xl"
               style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
-            <div className="absolute -bottom-32 -left-32 w-72 h-72 md:w-96 md:h-96 rounded-full opacity-25 blur-3xl"
+            <div className="absolute -bottom-32 -left-32 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-25 blur-3xl"
               style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
             <div className="absolute inset-0 opacity-[0.05]"
               style={{
@@ -33,16 +33,16 @@ export default function CTA({
                 <Sparkles className="w-3 h-3 text-[#F59E0B]" />
                 Let's Build Together
               </span>
-              <h2 className="mt-3 text-fluid-xl md:text-fluid-3xl font-bold leading-[1.1] text-white">
+              <h2 className="mt-2.5 text-fluid-xl md:text-fluid-2xl font-bold leading-[1.12] text-white">
                 {title}
               </h2>
-              <p className="mt-2.5 text-xs md:text-fluid-sm text-white/70 leading-relaxed">
+              <p className="mt-2 text-xs md:text-fluid-sm text-white/70 leading-relaxed">
                 {subtitle}
               </p>
-              <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+              <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5">
                 <button
                   onClick={openQuote}
-                  className="group inline-flex items-center justify-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto"
                 >
                   <FileText className="w-4 h-4 text-[#2563EB]" />
                   Get a Free Quote
@@ -50,7 +50,7 @@ export default function CTA({
                 </button>
                 <button
                   onClick={() => navigate('contact')}
-                  className="inline-flex items-center justify-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold text-white glass-dark border border-white/20 hover:border-white/40 transition-all w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold text-white glass-dark border border-white/20 hover:border-white/40 transition-all w-full sm:w-auto"
                 >
                   Contact Us
                 </button>

@@ -115,7 +115,7 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* Content with parallax */}
       <motion.div
-        className="relative z-10 container-premium min-h-[100svh] flex flex-col justify-center pt-28 pb-16"
+        className="relative z-10 container-premium min-h-[100svh] flex flex-col justify-center pt-24 pb-12"
         style={{ y: contentY }}
       >
         <div className="max-w-4xl">
@@ -123,7 +123,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             initial={{ opacity: 0, y: 20 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full glass border border-white/60 shadow-soft mb-6 md:mb-7"
+            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full glass border border-white/60 shadow-soft mb-5 md:mb-6"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75 animate-ping" />
@@ -153,7 +153,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             initial={{ opacity: 0, y: 24 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.95, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 md:mt-7 text-fluid-base md:text-fluid-lg text-[#475569] leading-relaxed max-w-2xl"
+            className="mt-4 md:mt-5 text-fluid-base md:text-fluid-lg text-[#475569] leading-relaxed max-w-2xl"
           >
             Minhas Enterprises is a diversified group delivering excellence across industries —
             from real estate and trading to technology and energy. We build with integrity,
@@ -164,7 +164,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             initial={{ opacity: 0, y: 24 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 1.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 md:mt-9 flex flex-wrap items-center gap-3 md:gap-4"
+            className="mt-6 md:mt-7 flex flex-wrap items-center gap-3 md:gap-4"
           >
             <button
               onClick={openQuote}
@@ -189,7 +189,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             initial="hidden"
             animate={visible ? 'show' : 'hidden'}
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 1.4 } } }}
-            className="mt-10 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 max-w-3xl"
+            className="mt-8 md:mt-10 grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 max-w-3xl"
           >
             {STATS.map((s) => {
               const Icon = s.icon;

@@ -156,20 +156,23 @@
   .text-fluid-4xl { font-size: var(--text-4xl); }
   .text-fluid-5xl { font-size: var(--text-5xl); }
 
-  /* Consistent container with left/right padding */
+  /* Consistent container — narrower, more centered, more side padding */
   .container-premium {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    max-width: 80rem; /* 1280px */
-    padding-left: 1.25rem; /* 20px */
-    padding-right: 1.25rem;
+    max-width: 72rem; /* 1152px — narrower for tighter centered look */
+    padding-left: 1.5rem; /* 24px mobile */
+    padding-right: 1.5rem;
   }
   @media (min-width: 768px) {
-    .container-premium { padding-left: 2rem; padding-right: 2rem; }
+    .container-premium { padding-left: 3rem; padding-right: 3rem; }
   }
   @media (min-width: 1024px) {
-    .container-premium { padding-left: 2.5rem; padding-right: 2.5rem; }
+    .container-premium { padding-left: 4rem; padding-right: 4rem; }
+  }
+  @media (min-width: 1280px) {
+    .container-premium { padding-left: 5rem; padding-right: 5rem; }
   }
 
   /* Focus visible for accessibility */

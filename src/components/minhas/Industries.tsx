@@ -29,7 +29,7 @@ export default function Industries() {
   const { navigate } = useNav();
 
   return (
-    <section id="industries" className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
+    <section id="industries" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
       <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
       <div className="absolute top-1/4 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />

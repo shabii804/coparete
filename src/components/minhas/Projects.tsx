@@ -55,7 +55,7 @@ export default function Projects() {
   const visible = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section id="projects" className="relative py-12 md:py-16 bg-white overflow-hidden">
       <div className="absolute top-0 right-0 w-[32rem] h-[32rem] md:w-[36rem] md:h-[36rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
@@ -106,7 +106,7 @@ export default function Projects() {
         {/* Projects grid */}
         <motion.div
           layout
-          className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[16rem] md:auto-rows-[18rem] lg:auto-rows-[20rem]"
+          className="mt-7 md:mt-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 auto-rows-[16rem] md:auto-rows-[18rem] lg:auto-rows-[20rem]"
         >
           <AnimatePresence>
             {visible.map((p, i) => (

@@ -73,7 +73,7 @@ export default function BlogPage() {
 
       {/* Featured article */}
       {featured && (
-        <section className="relative py-12 md:py-16 bg-white">
+        <section className="relative py-8 md:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
             <Reveal y={30}>
               <a href="#" className="group grid lg:grid-cols-2 gap-6 lg:gap-10 rounded-3xl overflow-hidden bg-[#F8FAFC] border border-[#E2E8F0] hover:shadow-premium-lg transition-all">
@@ -105,7 +105,7 @@ export default function BlogPage() {
       )}
 
       {/* Article grid */}
-      <section className="relative py-12 md:py-16 bg-[#F8FAFC] overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-[#F8FAFC] overflow-hidden">
         <div className="container-premium">
           {rest.length > 0 && (
             <>

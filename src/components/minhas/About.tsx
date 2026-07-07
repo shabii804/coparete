@@ -19,7 +19,7 @@ const HIGHLIGHTS = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 md:py-32 overflow-hidden bg-white">
+    <section id="about" className="relative py-12 md:py-16 overflow-hidden bg-white">
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />

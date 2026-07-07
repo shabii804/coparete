@@ -45,7 +45,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative py-14 md:py-20 bg-[#F8FAFC] overflow-hidden">
+    <section className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
       <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #F59E0B, transparent 70%)' }} />
 
@@ -57,7 +57,7 @@ export default function FAQ() {
           description="Can't find what you're looking for? Reach out — our team is happy to help."
         />
 
-        <div className="mt-8 md:mt-10 space-y-2.5">
+        <div className="mt-6 md:mt-8 space-y-2.5">
           {FAQS.map((faq, i) => {
             const open = openIndex === i;
             return (
@@ -116,7 +116,7 @@ export default function FAQ() {
         </div>
 
         <Reveal delay={0.2}>
-          <div className="mt-8 md:mt-10 text-center p-6 md:p-8 rounded-2xl bg-white border border-[#E2E8F0]">
+          <div className="mt-6 md:mt-8 text-center p-6 md:p-8 rounded-2xl bg-white border border-[#E2E8F0]">
             <p className="text-sm text-[#475569] mb-3">Still have questions?</p>
             <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1E40AF] shadow-premium hover:-translate-y-0.5 transition-all">
               Talk to our team

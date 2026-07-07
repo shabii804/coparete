@@ -34,7 +34,7 @@ const POSTS = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="relative py-20 md:py-32 bg-white overflow-hidden">
+    <section id="blog" className="relative py-12 md:py-16 bg-white overflow-hidden">
       <div className="absolute top-0 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
@@ -55,7 +55,7 @@ export default function Blog() {
           </Reveal>
         </div>
 
-        <StaggerGroup className="mt-10 md:mt-14 grid md:grid-cols-3 gap-5 md:gap-6" stagger={0.1}>
+        <StaggerGroup className="mt-7 md:mt-9 grid md:grid-cols-3 gap-5 md:gap-6" stagger={0.1}>
           {POSTS.map((p) => (
             <StaggerItem key={p.title}>
               <a
