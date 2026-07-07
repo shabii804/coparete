@@ -3,17 +3,18 @@
 import { motion } from 'framer-motion';
 import Hero from './Hero';
 import TechStack from './TechStack';
-import TrustedClients from './TrustedClients';
+import Industries from './Industries';
+import DevModels from './DevModels';
+import ContactSection from './ContactSection';
 import { Reveal, StaggerGroup, StaggerItem } from './Reveal';
 import SectionHeading from './SectionHeading';
 import { useNav } from './NavigationContext';
-import CTA from './CTA';
 import {
-  ArrowUpRight, ArrowRight, Cpu, Brain, ShoppingCart, GraduationCap, Monitor, Database, Bot, Shield,
-  Target, Eye, Heart, Zap, Clock, Users, Code2, TrendingUp, Star, Quote, CheckCircle2,
+  ArrowUpRight, Cpu, Brain, ShoppingCart, GraduationCap, Monitor, Database,
+  Target, Eye, Heart, Zap, Shield, Users, Code2, Star, Quote,
 } from 'lucide-react';
 
-// Tech company services — ERP, AI, POS, School Management, Desktop Apps
+// Tech company services
 const SERVICES_PREVIEW = [
   { icon: Cpu, title: 'ERP Systems', desc: 'Unified enterprise platforms for finance, HR, inventory, and operations.', color: '#2563EB' },
   { icon: Brain, title: 'AI & Machine Learning', desc: 'LLM integrations, computer vision, and predictive analytics.', color: '#10B981' },
@@ -29,19 +30,6 @@ const PILLARS = [
   { icon: Heart, title: 'Our Values', text: 'Innovation, integrity, and excellence in every line of code.' },
 ];
 
-const REASONS = [
-  { icon: Zap, title: 'Rapid Delivery', desc: 'Agile sprints with 96% on-time delivery across 180+ projects.' },
-  { icon: Shield, title: 'Enterprise Security', desc: 'SOC 2, ISO 27001, GDPR-compliant infrastructure by default.' },
-  { icon: Users, title: 'Expert Team', desc: '1200+ engineers, designers, and product thinkers in-house.' },
-];
-
-const IMPACT = [
-  { icon: TrendingUp, value: '180+', label: 'Projects Delivered' },
-  { icon: Users, value: '1.2K+', label: 'Engineers & Experts' },
-  { icon: Star, value: '42', label: 'Industry Awards' },
-  { icon: Clock, value: '25+', label: 'Years Experience' },
-];
-
 const PROJECTS_PREVIEW = [
   { title: 'MinhasERP', category: 'Enterprise', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', desc: 'Unified ERP for finance, HR, and operations.' },
   { title: 'EduFlow LMS', category: 'Education', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', desc: 'Learning management for 12K+ students.' },
@@ -55,20 +43,13 @@ const TEAM_PREVIEW = [
   { name: 'Sana Khan', role: 'Head of Product', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
 ];
 
-const TESTIMONIAL = {
-  quote: 'Minhas Enterprises rebuilt our entire ERP in 6 months — on time, on budget, and beyond what we imagined.',
-  name: 'Ayesha Rahman',
-  title: 'CEO, Nucleus Holdings',
-  avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-};
-
 const CAPABILITIES = [
   { icon: Code2, label: 'Web Apps' },
   { icon: Monitor, label: 'Desktop Apps' },
   { icon: Brain, label: 'AI/ML' },
   { icon: ShoppingCart, label: 'POS' },
   { icon: Database, label: 'ERP' },
-  { icon: Bot, label: 'Automation' },
+  { icon: Zap, label: 'Automation' },
 ];
 
 export default function HomePage({ visible }: { visible: boolean }) {
@@ -76,16 +57,10 @@ export default function HomePage({ visible }: { visible: boolean }) {
 
   return (
     <>
-      {/* 1. Hero */}
+      {/* 1. Hero (short) */}
       <Hero visible={visible} />
 
-      {/* 2. Tech Stack — horizontal moving marquee */}
-      <TechStack />
-
-      {/* 3. Trusted Clients */}
-      <TrustedClients />
-
-      {/* 4. About Preview */}
+      {/* 2. About Us */}
       <section id="about" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
@@ -97,13 +72,12 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Minhas Enterprises team" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 to-transparent" />
                 </div>
-                {/* Floating capability card */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 5, repeat: Infinity }}
                   className="absolute -bottom-4 -left-3 md:-left-6 p-3 rounded-2xl glass-strong border border-white/70 shadow-premium-lg"
                 >
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-2 mb-1">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] to-[#10B981] inline-flex items-center justify-center">
                       <Zap className="w-4 h-4 text-white" />
                     </div>
@@ -126,7 +100,6 @@ export default function HomePage({ visible }: { visible: boolean }) {
                   For over two decades, we've helped businesses digitize, automate, and scale.
                 </p>
               </Reveal>
-              {/* Capabilities chips */}
               <Reveal delay={0.2}>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {CAPABILITIES.map((c) => {
@@ -165,7 +138,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 5. Services Preview */}
+      {/* 3. Services */}
       <section id="services" className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
@@ -204,69 +177,16 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 6. Why Choose Us */}
-      <section className="relative py-10 md:py-14 bg-white overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-[32rem] h-[32rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
-        <div className="container-premium relative">
-          <SectionHeading
-            eyebrow="Why Choose Us"
-            eyebrowColor="emerald"
-            title={<>Three reasons clients <span className="text-gradient-royal">choose Minhas.</span></>}
-          />
-          <StaggerGroup className="mt-6 grid md:grid-cols-3 gap-4" stagger={0.08}>
-            {REASONS.map((r, i) => {
-              const Icon = r.icon;
-              return (
-                <StaggerItem key={r.title}>
-                  <div className="group relative h-full p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] hover:bg-white hover:border-[#2563EB]/30 hover-lift hover:shadow-premium transition-all overflow-hidden">
-                    <span className="absolute top-3 right-4 text-4xl font-extrabold text-[#0F172A]/5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>0{i + 1}</span>
-                    <div className="icon-modern w-12 h-12 mb-4"><Icon className="w-6 h-6" /></div>
-                    <h3 className="text-base font-bold text-[#0F172A] mb-1.5" style={{ fontFamily: 'var(--font-display), sans-serif' }}>{r.title}</h3>
-                    <p className="text-xs text-[#475569] leading-relaxed">{r.desc}</p>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerGroup>
-        </div>
-      </section>
+      {/* 4. Tech Stack (moving marquee) */}
+      <TechStack />
 
-      {/* 7. Impact Stats */}
-      <section className="relative py-10 md:py-14 overflow-hidden bg-[#0F172A]">
-        <div className="absolute inset-0 opacity-30 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
-          <div className="absolute bottom-0 right-1/4 w-[28rem] h-[28rem] rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
-        </div>
-        <div className="absolute inset-0 bg-grid-dark opacity-[0.06] pointer-events-none" />
-        <div className="container-premium relative">
-          <SectionHeading
-            eyebrow="Our Impact"
-            eyebrowColor="dark"
-            title={<>Numbers that <span className="text-gradient-gold">tell our story.</span></>}
-          />
-          <StaggerGroup className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" stagger={0.08}>
-            {IMPACT.map((s) => {
-              const Icon = s.icon;
-              return (
-                <StaggerItem key={s.label}>
-                  <div className="group p-4 md:p-5 rounded-2xl glass-dark border border-white/10 hover:border-white/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#10B981] inline-flex items-center justify-center mb-3 shadow-glow-blue group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="text-2xl md:text-3xl font-bold text-white break-words" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-                      {s.value}
-                    </div>
-                    <div className="mt-1 text-[11px] md:text-xs font-medium text-white/70">{s.label}</div>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerGroup>
-        </div>
-      </section>
+      {/* 5 & 6. Industries (grid + colorful moving marquee) */}
+      <Industries />
 
-      {/* 8. Featured Projects Preview */}
+      {/* 7. Software Development Models */}
+      <DevModels />
+
+      {/* 8. Portfolio */}
       <section id="projects" className="relative py-10 md:py-14 bg-white overflow-hidden">
         <div className="container-premium relative">
           <SectionHeading
@@ -302,7 +222,7 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 9. Team Preview */}
+      {/* 9. Team */}
       <section className="relative py-10 md:py-14 bg-[#F8FAFC] overflow-hidden">
         <div className="absolute inset-0 bg-dot opacity-40 pointer-events-none" />
         <div className="container-premium relative">
@@ -339,40 +259,8 @@ export default function HomePage({ visible }: { visible: boolean }) {
         </div>
       </section>
 
-      {/* 10. Testimonial highlight */}
-      <section className="relative py-10 md:py-14 bg-white overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full opacity-[0.06] blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #F59E0B, transparent 70%)' }} />
-        <div className="container-premium relative max-w-3xl text-center">
-          <Reveal>
-            <Quote className="w-10 h-10 text-[#2563EB]/15 mx-auto mb-4" />
-          </Reveal>
-          <Reveal delay={0.08}>
-            <blockquote className="text-fluid-lg md:text-fluid-xl font-medium text-[#0F172A] leading-relaxed" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
-              "{TESTIMONIAL.quote}"
-            </blockquote>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#2563EB]/30">
-                <img src={TESTIMONIAL.avatar} alt={TESTIMONIAL.name} className="w-full h-full object-cover" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-bold text-[#0F172A]">{TESTIMONIAL.name}</div>
-                <div className="text-[11px] text-[#64748B]">{TESTIMONIAL.title}</div>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={0.22}>
-            <div className="mt-5 flex justify-center gap-1">
-              {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />)}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 11. CTA */}
-      <CTA />
+      {/* 10. Contact Us */}
+      <ContactSection />
     </>
   );
 }

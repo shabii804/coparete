@@ -1,16 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, FileText, Play, Building2, Globe2, Award, Users, TrendingUp, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, FileText, Play, Building2, Globe2, Award, TrendingUp, ShieldCheck, Sparkles } from 'lucide-react';
 import { useNav } from './NavigationContext';
-
-const STATS = [
-  { icon: Award, label: 'Years Experience', value: 25, suffix: '+', color: '#2563EB' },
-  { icon: Building2, label: 'Projects Completed', value: 180, suffix: '+', color: '#10B981' },
-  { icon: Globe2, label: 'Business Units', value: 42, suffix: '', color: '#F59E0B' },
-  { icon: Users, label: 'Employees Worldwide', value: 1200, suffix: '+', color: '#2563EB' },
-];
 
 const TRUST_BADGES = [
   { icon: ShieldCheck, label: 'ISO Certified' },
@@ -18,41 +10,6 @@ const TRUST_BADGES = [
   { icon: Globe2, label: 'Global Presence' },
   { icon: Sparkles, label: 'Award Winning' },
 ];
-
-function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
-  const [display, setDisplay] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !started.current) {
-          started.current = true;
-          const duration = 1800;
-          const start = performance.now();
-          const tick = (now: number) => {
-            const p = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setDisplay(Math.round(value * eased));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [value]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {display.toLocaleString()}{suffix}
-    </span>
-  );
-}
 
 export default function Hero({ visible }: { visible: boolean }) {
   const { navigate, openQuote } = useNav();
@@ -62,7 +19,7 @@ export default function Hero({ visible }: { visible: boolean }) {
   const overlayOpacity = useTransform(scrollY, [0, 600], [1, 0.5]);
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden bg-[#F8FAFC]">
+    <section id="home" className="relative min-h-[88vh] lg:min-h-[92vh] w-full overflow-hidden bg-[#F8FAFC]">
       {/* ===== Background: corporate skyscraper image ===== */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <div className="absolute inset-0 scale-105">
@@ -127,7 +84,7 @@ export default function Hero({ visible }: { visible: boolean }) {
 
       {/* ===== Hero content ===== */}
       <motion.div
-        className="relative z-10 container-premium min-h-screen flex flex-col justify-center pt-28 pb-16"
+        className="relative z-10 container-premium min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-center pt-28 pb-12"
         style={{ y: contentY }}
       >
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
@@ -372,96 +329,6 @@ export default function Hero({ visible }: { visible: boolean }) {
           </motion.div>
         </div>
 
-        {/* ===== Stats row — full width below ===== */}
-        <motion.div
-          initial="hidden"
-          animate={visible ? 'show' : 'hidden'}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 1.5 } } }}
-          className="mt-16 lg:mt-20"
-        >
-          {/* Desktop: 4 in a row / Tablet: 2x2 / Mobile: horizontal scroll */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {STATS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={s.label}
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.95 },
-                    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-                  }}
-                  className="stat-card-premium p-5 md:p-6"
-                >
-                  <div
-                    className="w-11 h-11 rounded-xl inline-flex items-center justify-center mb-4"
-                    style={{
-                      background: `linear-gradient(135deg, ${s.color}18, ${s.color}28)`,
-                      boxShadow: `0 4px 12px ${s.color}20`,
-                    }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: s.color }} />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-extrabold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif', letterSpacing: '-0.02em' }}>
-                    <Counter value={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="mt-1.5 text-xs md:text-sm font-medium text-[#64748B]">
-                    {s.label}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Mobile: horizontal scrollable carousel */}
-          <div className="md:hidden -mx-6 px-6 overflow-x-auto no-scrollbar flex gap-3 snap-x snap-mandatory">
-            {STATS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={visible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 1.5 + STATS.indexOf(s) * 0.1, duration: 0.6 }}
-                  className="stat-card-premium p-5 flex-shrink-0 w-[200px] snap-center"
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl inline-flex items-center justify-center mb-3"
-                    style={{
-                      background: `linear-gradient(135deg, ${s.color}18, ${s.color}28)`,
-                    }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: s.color }} />
-                  </div>
-                  <div className="text-3xl font-extrabold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif', letterSpacing: '-0.02em' }}>
-                    <Counter value={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="mt-1 text-xs font-medium text-[#64748B]">{s.label}</div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={visible ? { opacity: 1 } : {}}
-        transition={{ delay: 2, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.35em] text-[#64748B] font-medium">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 rounded-full border-2 border-[#94A3B8] flex items-start justify-center p-1.5"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0], opacity: [1, 0.4, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"
-          />
-        </motion.div>
       </motion.div>
     </section>
   );

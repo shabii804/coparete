@@ -2,7 +2,7 @@
 
 import { Reveal } from './Reveal';
 import { useNav, type PageId } from './NavigationContext';
-import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone, Send, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone, Send, Sparkles, ArrowRight, ArrowUp } from 'lucide-react';
 
 const FOOTER_COLS: { title: string; links: { label: string; page?: PageId }[] }[] = [
   {
@@ -15,22 +15,23 @@ const FOOTER_COLS: { title: string; links: { label: string; page?: PageId }[] }[
     ],
   },
   {
-    title: 'Divisions',
+    title: 'Services',
     links: [
-      { label: 'Real Estate', page: 'services' },
-      { label: 'Trading', page: 'services' },
-      { label: 'Technology', page: 'services' },
-      { label: 'Energy', page: 'services' },
-      { label: 'Logistics', page: 'services' },
-      { label: 'Investments', page: 'services' },
+      { label: 'ERP Systems', page: 'services' },
+      { label: 'AI & ML', page: 'services' },
+      { label: 'POS Systems', page: 'services' },
+      { label: 'School Management', page: 'services' },
+      { label: 'Desktop Apps', page: 'services' },
+      { label: 'Custom Software', page: 'services' },
     ],
   },
   {
     title: 'Products',
     links: [
       { label: 'MinhasERP', page: 'products' },
-      { label: 'TradeBridge', page: 'products' },
-      { label: 'Skyline CRM', page: 'products' },
+      { label: 'EduFlow LMS', page: 'products' },
+      { label: 'RetailOne POS', page: 'products' },
+      { label: 'MinhasAI', page: 'products' },
       { label: 'Request Demo', page: 'products' },
     ],
   },
@@ -54,16 +55,17 @@ const SOCIAL = [
 
 export default function Footer() {
   const { navigate, openQuote } = useNav();
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   return (
     <footer className="relative bg-[#0F172A] text-white overflow-hidden">
-      {/* Top gradient accent line */}
+      {/* Top animated gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent" />
       <div className="absolute -top-32 left-1/4 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
       <div className="absolute -bottom-32 right-1/4 w-72 h-72 md:w-80 md:h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
-      {/* Modern CTA + Newsletter combined banner */}
+      {/* Newsletter — modern compact */}
       <div className="relative border-b border-white/10">
         <div className="container-premium py-8 md:py-10">
           <div className="grid lg:grid-cols-2 gap-5 md:gap-8 items-center">
@@ -77,7 +79,7 @@ export default function Footer() {
                   Subscribe to our <span className="text-gradient-gold">newsletter</span>
                 </h3>
                 <p className="mt-1.5 text-xs text-white/60 max-w-md leading-relaxed">
-                  Quarterly insights on projects, trends, and the future of diversified enterprise.
+                  Quarterly insights on tech, products, and the future of enterprise software.
                 </p>
               </div>
             </Reveal>
@@ -101,7 +103,7 @@ export default function Footer() {
 
       {/* Main footer — modern grid */}
       <div className="relative container-premium py-10 md:py-12">
-        <div className="grid lg:grid-cols-[1.6fr_repeat(4,1fr)] gap-8">
+        <div className="grid lg:grid-cols-[1.5fr_repeat(4,1fr)] gap-8">
           {/* Brand */}
           <div>
             <button onClick={() => navigate('home')} className="flex items-center gap-2.5 mb-4">
@@ -110,11 +112,11 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-base font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>Minhas Enterprises</div>
-                <div className="text-[9px] uppercase tracking-[0.32em] text-[#2563EB] font-medium mt-0.5">Building Tomorrow, Today</div>
+                <div className="text-[9px] uppercase tracking-[0.3em] text-[#2563EB] font-semibold mt-0.5">Building Tomorrow, Today</div>
               </div>
             </button>
             <p className="text-xs text-white/60 leading-relaxed max-w-xs">
-              A diversified conglomerate delivering excellence across real estate, trading, technology, energy, and logistics since 2001.
+              A technology company building ERP, AI, POS, and school management software that empowers businesses worldwide.
             </p>
 
             {/* Contact info compact */}
@@ -124,7 +126,7 @@ export default function Footer() {
               <div className="flex items-center gap-2"><Mail className="w-3 h-3 text-[#2563EB] flex-shrink-0" /><span>hello@minhas-enterprises.com</span></div>
             </div>
 
-            {/* Social — colorful with brand colors */}
+            {/* Social — colorful */}
             <div className="mt-4 flex gap-2">
               {SOCIAL.map((s) => {
                 const Icon = s.icon;
@@ -164,22 +166,22 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Modern CTA strip — gradient banner */}
+      {/* CTA strip + back to top */}
       <div className="relative border-t border-white/10">
-        <div className="container-premium py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl"
-            style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.15), rgba(16,185,129,0.15))' }}>
-            <div className="flex items-center gap-2.5 text-sm">
-              <Sparkles className="w-4 h-4 text-[#F59E0B]" />
-              <span className="text-white font-medium">Have a project in mind?</span>
-              <span className="text-white/60 text-xs hidden sm:inline">Let's turn your vision into impact.</span>
-            </div>
-            <button onClick={openQuote}
-              className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] transition-all hover:-translate-y-0.5">
-              Get a Free Quote
-              <ArrowRight className="w-3 h-3 text-[#2563EB] transition-transform group-hover:translate-x-0.5" />
-            </button>
-          </div>
+        <div className="container-premium py-4 flex items-center justify-between gap-3">
+          <button onClick={openQuote}
+            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] transition-all hover:-translate-y-0.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
+            Get a Free Quote
+            <ArrowRight className="w-3 h-3 text-[#2563EB] transition-transform group-hover:translate-x-0.5" />
+          </button>
+          <button onClick={scrollToTop}
+            className="group inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-white/60 hover:text-white border border-white/10 hover:border-white/30 transition-all"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
+            <span className="hidden sm:inline">Back to top</span>
+          </button>
         </div>
       </div>
 
