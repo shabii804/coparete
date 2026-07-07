@@ -24,7 +24,7 @@ const TEAM = [
     role: 'Chief Technology Officer',
     bio: 'Drives digital transformation, cloud infrastructure, and our technology division.',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    accent: '#D4AF37',
+    accent: '#F59E0B',
   },
   {
     name: 'Sana Khan',
@@ -127,7 +127,7 @@ export default function Team() {
                     </div>
                     <div
                       className="text-[11px] md:text-xs font-medium uppercase tracking-wider mt-0.5"
-                      style={{ color: m.accent === '#D4AF37' ? '#F4D77A' : m.accent === '#10B981' ? '#34D399' : '#60A5FA' }}
+                      style={{ color: m.accent === '#F59E0B' ? '#FBBF24' : m.accent === '#10B981' ? '#34D399' : '#60A5FA' }}
                     >
                       {m.role}
                     </div>

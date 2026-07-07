@@ -40,7 +40,7 @@ const CONTACT_INFO = [
   { icon: Clock, label: 'Office Hours', value: 'Mon – Sat · 9:00 AM – 6:00 PM PKT', href: '#' },
 ];
 
-export default function Contact() {
+export default function Contact({ onQuoteClick }: { onQuoteClick?: () => void }) {
   return (
     <section id="contact" className="relative py-20 md:py-32 bg-white overflow-hidden">
       <div className="absolute top-1/4 left-0 w-[36rem] h-[36rem] md:w-[40rem] md:h-[40rem] rounded-full opacity-[0.05] blur-3xl pointer-events-none"
@@ -80,13 +80,13 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-3 lg:items-end">
-                <a
-                  href="#contact-form"
+                <button
+                  onClick={onQuoteClick}
                   className="group inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium-lg hover:-translate-y-1 transition-all duration-500"
                 >
                   Start a Conversation
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-[#2563EB] transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                </button>
                 <a
                   href="mailto:hello@minhas-enterprises.com"
                   className="inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3.5 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-white glass-dark border border-white/20 hover:border-white/40 transition-all"

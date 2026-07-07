@@ -14,18 +14,17 @@ const LOADING_MESSAGES = [
 const COMPANY_NAME = 'MINHAS ENTERPRISES';
 
 export default function Preloader({ onComplete }: { onComplete: () => void }) {
-  const [stage, setStage] = useState(0); // 0..5
+  const [stage, setStage] = useState(0);
   const [messageIndex, setMessageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
-  // Stage progression
   useEffect(() => {
-    const stage1 = setTimeout(() => setStage(1), 100);   // logo appears
-    const stage2 = setTimeout(() => setStage(2), 900);   // letters appear
-    const stage3 = setTimeout(() => setStage(3), 2200);  // messages
-    const stage4 = setTimeout(() => setStage(4), 2400);  // progress bar
-    const stage5 = setTimeout(() => setStage(5), 5200);  // start exit
+    const stage1 = setTimeout(() => setStage(1), 100);
+    const stage2 = setTimeout(() => setStage(2), 900);
+    const stage3 = setTimeout(() => setStage(3), 2200);
+    const stage4 = setTimeout(() => setStage(4), 2400);
+    const stage5 = setTimeout(() => setStage(5), 5200);
     const finish = setTimeout(() => {
       setDone(true);
       onComplete();
@@ -35,7 +34,6 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     };
   }, [onComplete]);
 
-  // Cycle messages
   useEffect(() => {
     if (stage < 3) return;
     const id = setInterval(() => {
@@ -44,15 +42,11 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     return () => clearInterval(id);
   }, [stage]);
 
-  // Progress bar animation
   useEffect(() => {
     if (stage < 4) return;
     const id = setInterval(() => {
       setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(id);
-          return 100;
-        }
+        if (p >= 100) { clearInterval(id); return 100; }
         return Math.min(100, p + Math.random() * 9 + 3);
       });
     }, 110);
@@ -68,37 +62,28 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           exit={{ opacity: 0, filter: 'blur(8px)' }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Stage 1 — animated white gradient background */}
           <div
             className="absolute inset-0"
             style={{
-              background:
-                'linear-gradient(120deg, #FFFFFF 0%, #F8FAFC 35%, #FFFFFF 65%, #F0F7FF 100%)',
+              background: 'linear-gradient(120deg, #FFFFFF 0%, #F8FAFC 35%, #FFFFFF 65%, #EFF6FF 100%)',
               backgroundSize: '300% 300%',
               animation: 'gradient-shift 12s ease infinite',
             }}
           />
-          {/* Soft floating gradient orbs */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/4 left-1/4 w-[34rem] h-[34rem] rounded-full opacity-25 blur-3xl"
               style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.55) 0%, transparent 70%)' }} />
             <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] rounded-full opacity-20 blur-3xl"
               style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.55) 0%, transparent 70%)' }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] rounded-full opacity-10 blur-3xl"
-              style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 70%)' }} />
+              style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.5) 0%, transparent 70%)' }} />
           </div>
 
-          {/* Logo + name */}
           <div className="relative z-10 flex flex-col items-center">
-            {/* Stage 2 — logo fade-in / scale / glow / float */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.4 }}
-              animate={stage >= 1 ? {
-                opacity: 1,
-                scale: 1,
-                y: [0, -10, 0],
-              } : {}}
+              animate={stage >= 1 ? { opacity: 1, scale: 1, y: [0, -10, 0] } : {}}
               transition={{
                 opacity: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
                 scale: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
@@ -106,19 +91,17 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               }}
             >
               <div className="absolute inset-0 -m-6 rounded-full blur-2xl"
-                style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.55), transparent 70%)' }}
-              />
+                style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.55), transparent 70%)' }} />
               <div className="relative w-28 h-28 rounded-[28px] overflow-hidden shadow-glow-blue">
                 <img src="/minhas-logo.svg" alt="Minhas Enterprises" className="w-full h-full object-contain" />
               </div>
             </motion.div>
 
-            {/* Stage 3 — letter-by-letter company name */}
             <div className="mt-8 flex overflow-hidden">
               {COMPANY_NAME.split('').map((ch, i) => (
                 <span
                   key={i}
-                  className="inline-block text-2xl md:text-4xl font-medium tracking-[0.32em]"
+                  className="inline-block text-2xl md:text-4xl font-bold tracking-[0.32em]"
                   style={{
                     color: '#0F172A',
                     fontFamily: 'var(--font-display), sans-serif',
@@ -133,7 +116,6 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               ))}
             </div>
 
-            {/* Tagline under name */}
             <motion.p
               className="mt-3 text-xs uppercase tracking-[0.45em] text-[#94A3B8] font-medium"
               initial={{ opacity: 0, y: 8 }}
@@ -143,7 +125,6 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               Building Tomorrow, Today
             </motion.p>
 
-            {/* Stage 4 — changing loading messages */}
             <div className="h-6 mt-8 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -160,20 +141,17 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             </div>
           </div>
 
-          {/* Stage 5 — thin blue gradient progress bar at bottom */}
           <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#E2E8F0] overflow-hidden">
             <motion.div
               className="h-full"
               style={{
-                background: 'linear-gradient(90deg, #2563EB 0%, #10B981 50%, #D4AF37 100%)',
+                background: 'linear-gradient(90deg, #2563EB 0%, #10B981 50%, #F59E0B 100%)',
                 backgroundSize: '200% 100%',
               }}
               initial={{ width: '0%', backgroundPosition: '0% 50%' }}
-              animate={
-                stage >= 4
-                  ? { width: `${progress}%`, backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }
-                  : {}
-              }
+              animate={stage >= 4
+                ? { width: `${progress}%`, backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }
+                : {}}
               transition={{
                 width: { duration: 0.3, ease: 'easeOut' },
                 backgroundPosition: { duration: 2, repeat: Infinity, ease: 'linear' },
@@ -181,7 +159,6 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             />
           </div>
 
-          {/* Subtle percentage display */}
           <div className="absolute bottom-6 right-8 text-xs tabular-nums text-[#94A3B8] font-medium">
             {stage >= 4 ? `${Math.round(progress)}%` : ''}
           </div>

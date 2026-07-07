@@ -1,20 +1,28 @@
 'use client';
 
 import { Reveal } from './Reveal';
-import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Twitter, Facebook, Instagram, Mail, MapPin, Phone, Send } from 'lucide-react';
 
-const FOOTER_LINKS = [
+const FOOTER_COLS = [
   {
     title: 'Company',
-    links: ['About Us', 'Our Team', 'Careers', 'News & Media', 'Investor Relations'],
+    links: ['About Us', 'Our Team', 'Careers', 'News & Media', 'Investor Relations', 'Blog'],
   },
   {
-    title: 'Divisions',
+    title: 'Services',
     links: ['Real Estate', 'Trading', 'Technology', 'Energy', 'Logistics', 'Investments'],
   },
   {
+    title: 'Products',
+    links: ['MinhasERP', 'TradeBridge', 'Skyline CRM', 'Pricing', 'Documentation', 'Request Demo'],
+  },
+  {
+    title: 'Industries',
+    links: ['Education', 'Healthcare', 'Retail', 'Manufacturing', 'Real Estate', 'Government'],
+  },
+  {
     title: 'Resources',
-    links: ['Case Studies', 'Insights', 'Sustainability', 'Press Kit', 'Contact'],
+    links: ['Portfolio', 'Case Studies', 'Insights', 'Sustainability', 'Press Kit', 'Contact'],
   },
 ];
 
@@ -28,17 +36,18 @@ const SOCIAL = [
 export default function Footer() {
   return (
     <footer className="relative bg-[#0F172A] text-white overflow-hidden">
-      {/* Decorative top glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent" />
       <div className="absolute -top-32 left-1/4 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
         style={{ background: 'radial-gradient(circle, #2563EB, transparent 70%)' }} />
+      <div className="absolute -bottom-32 right-1/4 w-72 h-72 md:w-80 md:h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #10B981, transparent 70%)' }} />
 
       {/* Newsletter */}
       <div className="relative border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 md:px-8 py-10 md:py-16">
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
             <Reveal>
-              <h3 className="text-fluid-2xl md:text-fluid-3xl font-semibold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+              <h3 className="text-fluid-2xl md:text-fluid-3xl font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                 Subscribe to our <span className="text-gradient-gold">newsletter</span>
               </h3>
               <p className="mt-3 text-sm text-white/60 max-w-md leading-relaxed">
@@ -47,10 +56,7 @@ export default function Footer() {
               </p>
             </Reveal>
             <Reveal delay={0.1}>
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="flex flex-col sm:flex-row gap-3"
-              >
+              <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
                   <input
@@ -64,7 +70,7 @@ export default function Footer() {
                   className="group inline-flex items-center justify-center gap-2 px-5 md:px-6 py-3.5 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-[#F8FAFC] shadow-premium hover:-translate-y-0.5 transition-all"
                 >
                   Subscribe
-                  <ArrowUpRight className="w-4 h-4 text-[#2563EB] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <Send className="w-4 h-4 text-[#2563EB] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
               </form>
             </Reveal>
@@ -74,15 +80,15 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-12 md:py-20">
-        <div className="grid lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-12">
+        <div className="grid lg:grid-cols-[1.4fr_repeat(5,1fr)] gap-8 md:gap-8">
           {/* Brand */}
-          <div>
+          <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden shadow-premium">
                 <img src="/minhas-logo.svg" alt="Minhas Enterprises" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="text-base md:text-lg font-semibold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                <div className="text-base md:text-lg font-bold" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                   Minhas Enterprises
                 </div>
                 <div className="text-[9px] md:text-[10px] uppercase tracking-[0.32em] text-[#2563EB] font-medium mt-0.5">
@@ -94,6 +100,22 @@ export default function Footer() {
               A diversified conglomerate delivering excellence across real estate, trading,
               technology, energy, and logistics — building with integrity since 2001.
             </p>
+
+            {/* Contact info */}
+            <div className="mt-5 space-y-2 text-xs text-white/60">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0 mt-0.5" />
+                <span>Minhas Tower, Gulberg III, Lahore, Pakistan</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <span>+92 42 111 222 333</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <span>hello@minhas-enterprises.com</span>
+              </div>
+            </div>
 
             {/* Social */}
             <div className="mt-6 flex gap-2">
@@ -114,7 +136,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          {FOOTER_LINKS.map((col, i) => (
+          {FOOTER_COLS.map((col, i) => (
             <Reveal key={col.title} delay={0.05 * i}>
               <div>
                 <h4 className="text-[11px] uppercase tracking-[0.2em] text-white/50 font-semibold mb-4 md:mb-5">
@@ -123,10 +145,7 @@ export default function Footer() {
                 <ul className="space-y-2.5 md:space-y-3">
                   {col.links.map((link) => (
                     <li key={link}>
-                      <a
-                        href="#"
-                        className="text-sm text-white/70 hover:text-white inline-flex items-center gap-1.5 group transition-colors"
-                      >
+                      <a href="#" className="text-sm text-white/70 hover:text-white inline-flex items-center gap-1.5 group transition-colors">
                         {link}
                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </a>
@@ -145,10 +164,11 @@ export default function Footer() {
           <p className="text-xs text-white/50">
             © {new Date().getFullYear()} Minhas Enterprises. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 md:gap-6 text-xs text-white/50">
+          <div className="flex items-center gap-4 md:gap-6 text-xs text-white/50 flex-wrap justify-center">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
             <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>
+            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

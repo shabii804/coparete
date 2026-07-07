@@ -2,12 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Play, ChevronDown, Sparkles, TrendingUp, Globe2, Award } from 'lucide-react';
+import { ArrowRight, Play, ChevronDown, Sparkles, TrendingUp, Globe2, Award, FileText } from 'lucide-react';
 
-const HERO_HEADLINE_LINES = [
-  'Building Tomorrow,',
-  'Today.',
-];
+const HERO_HEADLINE_LINES = ['Building Tomorrow,', 'Today.'];
 
 const STATS = [
   { icon: TrendingUp, label: 'Years of Excellence', value: 25, suffix: '+' },
@@ -46,15 +43,13 @@ function Counter({ value, suffix = '' }: { value: number; suffix?: string }) {
 
   return (
     <span ref={ref} className="tabular-nums">
-      {display.toLocaleString()}
-      {suffix}
+      {display.toLocaleString()}{suffix}
     </span>
   );
 }
 
-export default function Hero({ visible }: { visible: boolean }) {
+export default function Hero({ visible, onQuoteClick }: { visible: boolean; onQuoteClick?: () => void }) {
   const { scrollY } = useScroll();
-  // Parallax: video moves slower than content as you scroll
   const videoY = useTransform(scrollY, [0, 700], [0, 140]);
   const contentY = useTransform(scrollY, [0, 700], [0, 60]);
   const overlayOpacity = useTransform(scrollY, [0, 500], [1, 0.6]);
@@ -66,44 +61,53 @@ export default function Hero({ visible }: { visible: boolean }) {
         <div className="absolute inset-0 scale-110">
           <video
             className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
+            autoPlay muted loop playsInline
             poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
           >
-            <source
-              src="https://cdn.coverr.co/videos/coverr-modern-corporate-building-7234/1080p.mp4"
-              type="video/mp4"
-            />
+            <source src="https://cdn.coverr.co/videos/coverr-modern-corporate-building-7234/1080p.mp4" type="video/mp4" />
           </video>
         </div>
-        {/* Soft white overlay for readability */}
         <motion.div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]" style={{ opacity: overlayOpacity }} />
         <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white/90" />
-        {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-grid opacity-40" />
       </motion.div>
 
-      {/* Floating background shapes */}
+      {/* Floating background shapes — animated blobs */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute -top-20 -left-20 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-30 blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.55), transparent 70%)' }}
-          animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+          animate={{ y: [0, 30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute top-1/3 -right-32 w-80 h-80 md:w-96 md:h-96 rounded-full opacity-25 blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.55), transparent 70%)' }}
-          animate={{ y: [0, -40, 0], x: [0, -20, 0] }}
+          animate={{ y: [0, -40, 0], x: [0, -20, 0], scale: [1, 1.15, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute bottom-10 left-1/4 w-64 h-64 md:w-72 md:h-72 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.5), transparent 70%)' }}
-          animate={{ y: [0, 30, 0] }}
+          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.5), transparent 70%)' }}
+          animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
+        {/* Floating geometric shapes */}
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-[#2563EB]/20"
+          animate={{ rotate: [0, 360], y: [0, 20, 0] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[#10B981]/25"
+          animate={{ rotate: [0, -360], y: [0, -16, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/3 w-8 h-8 md:w-10 md:h-10 rotate-45 bg-gradient-to-br from-[#F59E0B]/30 to-transparent"
+          animate={{ rotate: [45, 405], y: [0, 14, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
         />
       </div>
 
@@ -113,7 +117,6 @@ export default function Hero({ visible }: { visible: boolean }) {
         style={{ y: contentY }}
       >
         <div className="max-w-4xl">
-          {/* Eyebrow badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
@@ -129,8 +132,7 @@ export default function Hero({ visible }: { visible: boolean }) {
             </span>
           </motion.div>
 
-          {/* Headline line by line */}
-          <h1 className="text-fluid-5xl font-semibold leading-[1.02] text-[#0F172A] tracking-tight">
+          <h1 className="text-fluid-5xl font-extrabold leading-[1.02] text-[#0F172A] tracking-tight">
             {HERO_HEADLINE_LINES.map((line, i) => (
               <span key={i} className="block overflow-hidden pb-1">
                 <motion.span
@@ -139,17 +141,12 @@ export default function Hero({ visible }: { visible: boolean }) {
                   animate={visible ? { y: '0%' } : {}}
                   transition={{ delay: 0.4 + i * 0.18, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {i === 1 ? (
-                    <span className="text-gradient-royal">{line}</span>
-                  ) : (
-                    line
-                  )}
+                  {i === 1 ? <span className="text-gradient-triple">{line}</span> : line}
                 </motion.span>
               </span>
             ))}
           </h1>
 
-          {/* Subtitle fades upward */}
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
@@ -161,20 +158,20 @@ export default function Hero({ visible }: { visible: boolean }) {
             innovate with purpose, and grow alongside the communities we serve.
           </motion.p>
 
-          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={visible ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 1.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 md:mt-9 flex flex-wrap items-center gap-3 md:gap-4"
           >
-            <a
-              href="#services"
+            <button
+              onClick={onQuoteClick}
               className="group inline-flex items-center gap-2 px-5 md:px-7 py-3 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1E40AF] shadow-premium-lg hover:shadow-glow-blue transition-all duration-500 hover:-translate-y-1"
             >
-              Explore Our Work
+              <FileText className="w-4 h-4 md:w-5 md:h-5" />
+              Get a Free Quote
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            </button>
             <a
               href="#about"
               className="group inline-flex items-center gap-2 px-5 md:px-7 py-3 md:py-4 rounded-2xl text-sm md:text-base font-semibold text-[#0F172A] bg-white/80 backdrop-blur-md border border-[#E2E8F0] hover:border-[#2563EB] hover:bg-white shadow-soft hover:shadow-premium transition-all duration-500 hover:-translate-y-1"
@@ -186,14 +183,10 @@ export default function Hero({ visible }: { visible: boolean }) {
             </a>
           </motion.div>
 
-          {/* Stats cards — appear one after another */}
           <motion.div
             initial="hidden"
             animate={visible ? 'show' : 'hidden'}
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.12, delayChildren: 1.4 } },
-            }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 1.4 } } }}
             className="mt-12 md:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl"
           >
             {STATS.map((s) => {
@@ -211,7 +204,7 @@ export default function Hero({ visible }: { visible: boolean }) {
                   <div className="icon-modern w-9 h-9 mb-3">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-semibold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
+                  <div className="text-2xl md:text-3xl font-bold text-[#0F172A]" style={{ fontFamily: 'var(--font-display), sans-serif' }}>
                     <Counter value={s.value} suffix={s.suffix} />
                   </div>
                   <div className="mt-1 text-[11px] md:text-xs font-medium text-[#64748B] tracking-wide">
@@ -224,16 +217,13 @@ export default function Hero({ visible }: { visible: boolean }) {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={visible ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 1.8, duration: 0.8 }}
         className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.35em] text-[#64748B] font-medium">
-          Scroll
-        </span>
+        <span className="text-[10px] uppercase tracking-[0.35em] text-[#64748B] font-medium">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
