@@ -40,10 +40,10 @@ export default function Navbar({ visible }: { visible: boolean }) {
     >
       <nav
         className={cn(
-          'mx-auto max-w-6xl flex items-center justify-between rounded-2xl px-4 md:px-5 transition-all duration-400 ease-premium',
+          'mx-auto max-w-7xl flex items-center justify-between rounded-2xl px-4 md:px-6 transition-all duration-400 ease-premium',
           scrolled
-            ? 'h-14 bg-white/80 backdrop-blur-xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
-            : 'h-16 bg-white/50 backdrop-blur-md border border-white/30'
+            ? 'h-20 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#1D4ED8] backdrop-blur-xl border border-[#3B82F6]/40 shadow-[0_10px_40px_rgba(37,99,235,0.30)]'
+            : 'h-20 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#1D4ED8] backdrop-blur-md border border-[#3B82F6]/30 shadow-[0_8px_30px_rgba(37,99,235,0.20)]'
         )}
       >
         {/* Logo — left */}
@@ -59,18 +59,18 @@ export default function Navbar({ visible }: { visible: boolean }) {
             <img src="/minhas-logo.svg" alt="Minhas Enterprises" className="w-full h-full object-contain" />
           </motion.div>
           <div className="hidden sm:flex flex-col leading-none">
-            <span className="text-sm font-bold tracking-tight text-[#0F172A]"
+            <span className="text-sm font-bold tracking-tight text-white"
               style={{ fontFamily: 'var(--font-display), sans-serif' }}>
               Minhas
             </span>
-            <span className="text-[9px] uppercase tracking-[0.3em] text-[#2563EB] font-semibold mt-0.5">
+            <span className="text-[9px] uppercase tracking-[0.3em] text-blue-200 font-semibold mt-0.5">
               Enterprises
             </span>
           </div>
         </button>
 
         {/* Desktop nav — centered, modern pill style */}
-        <div className="hidden xl:flex items-center gap-0.5 p-1 rounded-xl bg-[#F8FAFC]/70 border border-[#E2E8F0]/60">
+        <div className="hidden xl:flex items-center gap-0.5 p-1 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md">
           {NAV_LINKS.map((l) => {
             const active = currentPage === l.page;
             return (
@@ -80,14 +80,14 @@ export default function Navbar({ visible }: { visible: boolean }) {
                 className={cn(
                   'relative px-3 py-1.5 text-[13px] font-medium rounded-lg transition-all duration-300',
                   active
-                    ? 'text-white'
-                    : 'text-[#475569] hover:text-[#0F172A]'
+                    ? 'text-[#2563EB]'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
                 )}
               >
                 {active && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] shadow-[0_4px_12px_rgba(37,99,235,0.3)]"
+                    className="absolute inset-0 rounded-lg bg-white shadow-[0_4px_12px_rgba(0,0,0,0.15)]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -101,7 +101,7 @@ export default function Navbar({ visible }: { visible: boolean }) {
         <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={openQuote}
-            className="hidden md:inline-flex items-center gap-1.5 h-9 px-4 rounded-xl text-[13px] font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] shadow-[0_6px_16px_rgba(37,99,235,0.25)] hover:shadow-[0_10px_24px_rgba(37,99,235,0.35)] transition-all duration-300 hover:-translate-y-0.5"
+            className="hidden md:inline-flex items-center gap-1.5 h-10 px-5 rounded-xl text-[13px] font-semibold text-[#2563EB] bg-white shadow-[0_6px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_10px_28px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-0.5"
           >
             <FileText className="w-3.5 h-3.5" />
             Get a Quote
@@ -110,7 +110,7 @@ export default function Navbar({ visible }: { visible: boolean }) {
           <button
             aria-label="Toggle menu"
             onClick={() => setMobileOpen((o) => !o)}
-            className="xl:hidden w-10 h-10 inline-flex items-center justify-center rounded-xl bg-white/70 border border-[#E2E8F0] text-[#0F172A] hover:bg-white transition-colors shadow-soft"
+            className="xl:hidden w-10 h-10 inline-flex items-center justify-center rounded-xl bg-white/20 border border-white/30 text-white hover:bg-white/30 transition-colors backdrop-blur-md"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
